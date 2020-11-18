@@ -1,0 +1,20 @@
+{
+  "name": "travel",
+  "version": "1.0.0",
+  "description": "A travel and hotel booking website",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "picker.js": "^0.1.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

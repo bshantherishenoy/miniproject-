@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Lora", serif;
+}
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+/* main div */
+#bookingdiv {
+ background-color: rgb(197, 194, 194);
+  height: 94vh;
+  width: 90vw;
+  border-radius: 30px;
+}
+/* main div image */
+.bookingimg {
+  position: absolute;
+  height: 60vh;
+  width: 90vw;
+  border-radius: 30px;
+  transition: all 0.4s ease-in-out;
+}
+/* inside div */
+.booking-content {
+  position: relative;
+}
+#logo {
+  font-family: "Acme", sans-serif;
+  color: rgb(255, 255, 255);
+  letter-spacing: 3px;
+  font-size: 3.2rem;
+  margin-left: 25px;
+  margin-top: 15px;
+}
+#logo:hover {
+  transform: scale(1.1);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+.navbar li {
+  color: rgb(248, 245, 245);
+  font-weight: 1000;
+  font-size: 1.2rem;
+  margin-top: 0.7rem;
+  margin-right: 2rem;
+  padding: 1rem;
+  border-bottom: 2px solid black;
+  border-radius: 10px 10px 0px 0px;
+}
+.navbar a {
+  text-decoration: none;
+}
+.navbar li::after:hover {
+  border-radius: 20px;
+}
+.navbar li:hover {
+  transform: scale(1.1);
+
+  /* background-color: tomato; */
+  background-color: whitesmoke;
+  color: black;
+  opacity: 0.9;
+}
+.slider {
+  font-size: 2.5rem;
+  position: absolute;
+  color: aliceblue;
+  padding: 1rem;
+}
+.slider-left {
+  z-index: 3;
+  top: 31vh;
+  left: 6.0vw;
+}
+.slider:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.slider-right {
+  z-index: 3;
+  top: 31vh;
+ right: 6.0vw;
+}
+/* ticket booking div */
+
+.modeoftransport {
+  font-family: 'Source Serif Pro', serif;
+  position: absolute;
+  top: 40.5vh;
+  left: 10.3vw;
+  width: 40vw;
+  height: 10vw;
+  background-color: rgb(250, 250, 252);
+  border-radius: 20px 20px 0px 0px;
+  background-color: black;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-around;
+}
+/* actual div for details of ticke */
+.ticketbooking {
+  font-family: 'Source Serif Pro', serif;
+  z-index: 2;
+  background-color: #e7eff9;
+  -moz-box-shadow: inset 0 0px 10px #000000;
+  -webkit-box-shadow: inset 0 0px 10px #000000;
+  box-shadow: inset 0 0px 10px t#000000;
+  position: absolute;
+  top: 48vh;
+  left: 9.2vw;
+  width: 73vw;
+  height: 19vw;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px 0px 20px 20px;
+  margin-top: 0.7rem;
+}
+
+.modeoftransport h4 {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: rgb(252, 252, 252);
+  text-decoration: none;
+}
+.modeoftransport h4:first-child {
+  opacity: 1;
+  color: #000000;
+  border-radius: 20px 0px 0px 0px;
+  background-color: rgb(255, 255, 255);
+  padding: 1rem 4.4rem;
+}
+.modeoftransport h4:nth-child(2) {
+  padding: 1rem 4.4rem;
+}
+.modeoftransport h4:nth-child(3) {
+  border-radius: 0px 20px 0px 0px;
+
+  padding: 1rem 4.4rem;
+}
+.from,.to,.departuredate,.passengers{
+  width: 18vw;
+  padding: 0.5rem;
+  height: 21vh;
+border-radius: 10px;
+margin-right: 0.5rem;
+margin-left: 0.5rem;
+}
+.from{
+  border: 2px solid rgb(252, 136, 136);
+}
+.to{
+  border: 2px solid rgb(149, 202, 149);
+}
+.departuredate{
+  border: 2px solid rgb(172, 158, 223);
+}
+.passengers{
+  border: 2px solid rgb(222, 223, 158);
+}
+.from h3,.to h3,.departuredate h3,.passengers h3{
+  margin-bottom: 0.4rem;
+}
+.from-details,.to-details,.departuredatedetails,.passenger-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.from-details,.to-details,.departuredatedetails{
+  margin-top: 1.3rem;
+}
+.departuredatedetails{
+  padding: 0.1rem;
+}
+.ticketbooking h2{
+  z-index: 2;
+background-color: rgb(191, 255, 255);
+padding: 0.6rem;
+border-radius: 2px 2px 0px 0px;
+text-align: center;
+}
+
+#today{
+  padding: 0.5rem;
+}
+
+
+
+.ticketdetails{
+  padding: 0 0.9rem;
+  margin-top: 1.5rem;
+  display: flex;
+}
+
+
+/* select */
+.select-css {
+	display: block;
+	font-size: 16px;
+	font-family: sans-serif;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+	  linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+  margin-bottom: 0.3rem;
+}
+.select-css::-ms-expand {
+	display: none;
+}
+.select-css:hover {
+	border-color: #888;
+}
+.select-css:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #222;
+	outline: none;
+}
+.select-css option {
+	font-weight:normal;
+}
+/* avialability button */
+.availability{
+  border-radius: 10px;
+  outline: 0;
+  border: 0;
+  color: rgb(9, 10, 10);
+  background-color: rgb(99, 247, 106);
+  font-family: 'Slabo 27px', serif;
+  font-weight: 800;
+  letter-spacing: 0.09rem;
+  cursor: pointer;
+  position: absolute;
+  right: -40px;
+  bottom: -20px;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+.availability:hover{
+  background-color: rgb(30, 253, 41);
+  transform: scale(1.05)
+}
