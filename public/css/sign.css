@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");    /*logo and other content*/
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap'); /* navbar */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap'); /*availability button*/
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+/* main div */
+#bookingdiv {
+    margin-top: 6rem;
+ background-color: rgba(226, 226, 226,0.5);
+  height: 105vh;
+  width: 90vw;
+  border-radius: 30px;
+  
+}
+/* main div image */
+.bookingimg {
+  position: absolute;
+  height: 110vh;
+  width: 90vw;
+  border-radius: 30px;
+  transition: all 0.4s ease-in-out;
+}
+/* inside div */
+.booking-content {
+  position: relative;
+}
+#logo {
+    font-weight: 900;
+  font-family: "Acme", sans-serif;
+  color: rgb(255, 255, 255);
+  letter-spacing: 3px;
+  font-size: 3.8rem;
+  margin-left: 30px;
+  margin-top: 15px;
+}
+#logo:hover {
+  transform: scale(1.1);
+}
+.navbar {
+  font-family: 'Lora', serif;
+
+
+  letter-spacing: 1px;
+
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+.navbar li {
+ 
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-weight: 1000;
+  font-size: 1.2rem;
+  margin-top: 1.2rem;
+  margin-right: 2rem;
+  padding: 1rem;
+  border-bottom: 2px solid black;
+  border-radius: 10px 10px 0px 0px;
+}
+.navbar a {
+  text-decoration: none;
+}
+.navbar li::after:hover {
+  border-radius: 20px;
+}
+.navbar li:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 1);
+  /* background-color: tomato; */
+
+}
+  
+/* caraousel-slider */
+.caraouselslider{
+    display: none;
+    pointer-events: none;
+  }
+.signup{
+    border-radius: 20px ;
+    margin-top: 4rem;
+    position: absolute;
+    z-index: 2;
+    width: 60vw;
+    height: 70vh;
+    background-color: #aaa6a6;
+}
+.signupdiv,.signindiv{
+    z-index: 2;
+    position: absolute;
+margin-top: -1rem;
+left: 50%;
+transform: translateX(-50%);
+
+}
+
+.signindiv{
+    margin-top: 4rem;
+}
+body{
+    height: 118vh;
+    width: 100vw;
+    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family:sans-serif;
+  background-image: url("pexels-pixabay-531756.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: 'Montserrat', sans-serif;
+}
+.sign-up-form
+{
+  width:350px;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+  background: #fff;
+  padding:20px;
+  margin :4% auto 0;
+  text-align: center;
+  border-radius: 20px;
+
+}
+.sign-up-form h1
+{
+  color:#1c8adb;
+  margin-bottom: 30px;
+
+}
+.input-box{
+  border-radius: 20px;
+  padding:10px;
+  margin:10px 0;
+  width:100%;
+  border:1px solid #999;
+  outline:none;
+
+
+}
+button{
+  color: #fff;
+  width:100%;
+  padding:10px;
+  border-radius: 20px;
+  font-size:15px;
+  margin:10px 0;
+  border:none;
+  outline:none;
+  cursor:pointer;
+
+}
+.far{
+  color:#21afde;
+}
+.signup-btn{
+  background-color: #1c8adb;
+}
+.twitter-btn{
+  background-color: #21afde;
+}
+a{
+  text-decoration: none;
+}
+hr{
+  margin-top: 20px;
+  width:80%;
+
+}
+.or{
+  background: #fff;
+  width:30px;
+  margin:-28px auto 10px;
+
+}
+.check{
+  margin: 10px;
+}

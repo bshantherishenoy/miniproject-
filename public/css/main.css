@@ -18,7 +18,7 @@
 }
 /* main div */
 #bookingdiv {
- background-color: rgb(197, 194, 194);
+ background-color: rgba(226, 226, 226,0.5);
   height: 94vh;
   width: 90vw;
   border-radius: 30px;
@@ -39,8 +39,8 @@
   font-family: "Acme", sans-serif;
   color: rgb(255, 255, 255);
   letter-spacing: 3px;
-  font-size: 3.2rem;
-  margin-left: 25px;
+  font-size: 3.8rem;
+  margin-left: -30px;
   margin-top: 15px;
 }
 #logo:hover {
@@ -51,14 +51,16 @@
   letter-spacing: 1px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style-type: none;
 }
 .navbar li {
-  color: rgb(248, 245, 245);
+ 
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
   font-weight: 1000;
   font-size: 1.2rem;
-  margin-top: 0.7rem;
+  margin-top: 1.2rem;
   margin-right: 2rem;
   padding: 1rem;
   border-bottom: 2px solid black;
@@ -72,31 +74,9 @@
 }
 .navbar li:hover {
   transform: scale(1.1);
-
+  background-color: rgba(255, 255, 255, 1);
   /* background-color: tomato; */
-  background-color: whitesmoke;
-  color: black;
-  opacity: 0.9;
-}
-.slider {
-  font-size: 2.5rem;
-  position: absolute;
-  color: aliceblue;
-  padding: 1rem;
-}
-.slider-left {
-  z-index: 3;
-  top: 31vh;
-  left: 6.0vw;
-}
-.slider:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.slider-right {
-  z-index: 3;
-  top: 31vh;
- right: 6.0vw;
+
 }
 /* ticket booking div */
 
@@ -104,7 +84,7 @@
   font-family: "Acme", sans-serif;
   position: absolute;
   top: 40.5vh;
-  left: 9.3vw;
+  left: 5.3vw;
   width: 40vw;
   height: 10vw;
   border-radius: 20px 20px 0px 0px;
@@ -123,8 +103,8 @@
   box-shadow: inset 0 0px 10px t#000000;
   position: absolute;
   top: 48vh;
-  left: 9.2vw;
-  width: 73vw;
+  left: 5.2vw;
+  width: 80vw;
   height: 19vw;
   background-color: rgb(255, 255, 255);
   border-radius: 0px 0px 20px 20px;
@@ -152,7 +132,7 @@
 
   padding: 1rem 4.4rem;
 }
-.from,.to,.departuredate,.passengers{
+.from,.to,.departuredate,.passengers,.returndate{
   width: 18vw;
   padding: 0.5rem;
   height: 21vh;
@@ -166,25 +146,25 @@ margin-left: 0.5rem;
 .to{
   border: 2px solid rgb(149, 202, 149);
 }
-.departuredate{
+.departuredate,.returndate{
   border: 2px solid rgb(172, 158, 223);
 }
 .passengers{
   border: 2px solid rgb(222, 223, 158);
 }
-.from h3,.to h3,.departuredate h3,.passengers h3{
+.from h3,.to h3,.departuredate h3,.passengers h3,.returndate h3{
   margin-bottom: 0.4rem;
 }
-.from-details,.to-details,.departuredatedetails,.passenger-details{
+.from-details,.to-details,.departuredatedetails,.passenger-details,.returndatedetails{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.from-details,.to-details,.departuredatedetails{
+.from-details,.to-details,.departuredatedetails,.returndatedetails{
   margin-top: 1.3rem;
 }
-.departuredatedetails{
+.departuredatedetails,.returndatedetails{
   padding: 0.1rem;
 }
 .ticketbooking h2{
@@ -195,15 +175,18 @@ border-radius: 2px 2px 0px 0px;
 text-align: center;
 }
 
-#today{
+#today,#returndatebooking{
   padding: 0.5rem;
+}
+#transportmodeinput{
+  display: none;
 }
 
 
 
 .ticketdetails{
   padding: 0 0.9rem;
-  margin-top: 1.5rem;
+  margin-top: 0.9rem;
   display: flex;
 }
 
@@ -251,6 +234,12 @@ text-align: center;
 .select-css option {
 	font-weight:normal;
 }
+
+/* caraousel-slider */
+.caraouselslider{
+  display: none;
+  pointer-events: none;
+}
 /* avialability button */
 .availability{
   border-radius: 10px;
@@ -263,8 +252,8 @@ text-align: center;
   letter-spacing: 0.09rem;
   cursor: pointer;
   position: absolute;
-  right: -40px;
-  bottom: -20px;
+  right: -50px;
+  bottom: -25px;
   padding: 1rem;
   font-size: 1.2rem;
 }
@@ -272,3 +261,91 @@ text-align: center;
   background-color: rgb(30, 253, 41);
   transform: scale(1.05)
 }
+
+/* checkbox */
+.control-group{
+  font-size: 1rem;
+  margin-top: 0.5rem;
+margin-left: 2rem;
+width: 250px;
+}
+.control {
+  font-family: inherit;
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  cursor: pointer;
+  font-size: inherit;
+}
+  .control input {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+  }
+.control_indicator {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #d3d4d4;
+  border: 0px solid #000000;
+  border-radius: 0px;
+}
+.control:hover input ~ .control_indicator,
+.control input:focus ~ .control_indicator {
+  background: #cccccc;
+}
+
+.control input:checked ~ .control_indicator {
+  background: #008736;
+}
+.control:hover input:not([disabled]):checked ~ .control_indicator,
+.control input:checked:focus ~ .control_indicator {
+  background: #008736;
+}
+.control input:disabled ~ .control_indicator {
+  background: #008736;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.control_indicator:after {
+  box-sizing: unset;
+  content: '';
+  position: absolute;
+  display: none;
+}
+.control input:checked ~ .control_indicator:after {
+  display: block;
+}
+.control-checkbox .control_indicator:after {
+  left: 8px;
+  top: 4px;
+  width: 3px;
+  height: 8px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.control-checkbox input:disabled ~ .control_indicator:after {
+  border-color: #008736;
+}
+.control-checkbox .control_indicator::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-left: -1.3rem;
+  margin-top: -1.3rem;
+  background: #008736;
+  border-radius: 3rem;
+  opacity: 0.6;
+  z-index: 99999;
+  transform: scale(0);
+}
+

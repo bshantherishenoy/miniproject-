@@ -1,115 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/css/main.css" />
-    <title>Easygo</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <body>
-    <!-- <img id="bgimg"  src="/img/bgimg.jpg" alt="Bad Request" /> -->
-    <div id="main">
-      <div id="bookingdiv">
-        <div class="caraouselslider">
-          <i class="fas fa-chevron-left slider slider-left"></i>
-          <i class="fas fa-chevron-right slider slider-right"></i>
+  <link rel="stylesheet" href="/css/main.css" />
+  <title>Easygo</title>
+</head>
+
+<body>
+  <!-- <img id="bgimg"  src="/img/bgimg.jpg" alt="Bad Request" /> -->
+  <div id="main">
+    <div id="bookingdiv">
+      <div class="caraouselslider">
+        <i class="fas fa-chevron-left slider slider-left"></i>
+        <i class="fas fa-chevron-right slider slider-right"></i>
+      </div>
+      <img class="bookingimg" src="/img/loading2.jpg" alt="Bad Request" />
+      <div class="booking-content">
+        <ul class="navbar">
+          <a href="">
+            <h2 id="logo">EasyGo</h2>
+          </a>
+          <a href="/">
+            <li>HOME</li>
+          </a>
+          <a href="">
+            <li>ABOUT US</li>
+          </a>
+          <a href="/signin">
+            <li>SIGN IN</li>
+          </a>
+          <a href="/signup">
+            <li>SIGN UP</li>
+          </a>
+        </ul>
+        <div class="modeoftransport">
+          <h4>PLANE</h4>
+          <h4>TRAIN</h4>
+          <h4>BUS</h4>
         </div>
-        <img class="bookingimg" src="/img/loading2.jpg" alt="Bad Request" />
-        <div class="booking-content">
-          <ul class="navbar">
-            <a href=""><h2 id="logo">EasyGo</h2></a>
-            <a href=""><li>HOME</li></a>
-            <a href=""><li>ABOUT US</li></a>
-            <a href=""><li>SIGN IN</li></a>
-            <a href=""><li>SIGN UP</li></a>
-          </ul>
-          <div class="modeoftransport">
-            <h4>PLANE</h4>
-            <h4>TRAIN</h4>
-            <h4>BUS</h4>
-          </div>
+        <!-- form beginning -->
+        <form action="/" method="POST">
+          <input  id ="transportmodeinput" name="transport" type="text" value="PLANE"> <!-- This field is hidden-->
           <div class="ticketbooking">
             <h2>PLANE BOOKING</h2>
+            <!-- checkbox -->
+            <div class="control-group">
+              <label class="control control-checkbox">
+          Round Trip (Return Booking)
+                      <input name="checkbox" id="roundtripcheckbox" type="checkbox" >
+                  <div class="control_indicator"></div>
+              </label>
+          </div>
+            <!-- checkbox -->
             <div class="ticketdetails">
               <div class="from">
                 <h3>FROM:</h3>
                 <div class="from-details">
-                  <select class="select-css from-select">
-                    <option>--select--</option>
-                    <option>BANGLORE</option>
-                    <option>CHENNAI</option>
-                    <option>MUMBAI</option>
-                    <option>DELHI</option>
-                    <option>HYDERABAD</option>
+                  <select name="from" class="select-css from-select" required>
+                    <option value="">--select--</option> 
+                    <option value="BANGLORE">BANGLORE</option>
+                    <option value="CHENNAI">CHENNAI</option>
+                    <option value="MUMBAI">MUMBAI</option>
+                    <option value="DELHI">DELHI</option>
+                    <option  value="HYDERABAD">HYDERABAD</option>
                   </select>
                 </div>
               </div>
               <div class="to">
                 <h3>TO:</h3>
                 <div class="to-details">
-                  <select class="select-css">
-                    <option>--select--</option>
-                    <option>BANGLORE</option>
-                    <option>CHENNAI</option>
-                    <option>MUMBAI</option>
-                    <option>DELHI</option>
-                    <option>HYDERABAD</option>
+                  <select name="to" class="select-css" required>
+                    <option value="">--select--</option>
+                    <option value="BANGLORE">BANGLORE</option>
+                    <option value="CHENNAI">CHENNAI</option>
+                    <option value="MUMBAI">MUMBAI</option>
+                    <option value="DELHI">DELHI</option>
+                    <option value="HYDERABAD">HYDERABAD</option>
                   </select>
                 </div>
               </div>
               <div class="departuredate">
                 <h3>DEPARTURE DATE:</h3>
                 <div class="departuredatedetails">
-                  <input id="today" type="date" />
+                  <input name="date1" id="today" type="date" required>
                 </div>
               </div>
               <div class="passengers">
                 <h3>PASSENGERS:</h3>
                 <div class="passenger-details">
-                  <select class="select-css">
-                    <option>--ADULTS--</option>
-    
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
+                  <select name="adult" class="select-css" required>
+                    <option value="">--ADULTS--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                   </select>
-                  <select class="select-css">
-                    <option>--CHILDREN--</option>
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
+                  <select name="children" class="select-css" required>
+                    <option value=""> --CHILDREN--</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                   </select>
                 </div>
               </div>
+              <div class="returndate">
+                <h3>RETURN DATE :</h3>
+                <div class="returndatedetails">
+                  <input name="date2" id="returndatebooking" type="date" >
+                </div>
+              </div>
             </div>
-            <button class="availability">CHECK AVAILABILITY &nbsp;<i class="fas fa-chevron-right"></i></i></button>
+            <input type="submit" class="availability" value="CHECK AVAILABILITY &nbsp;">
           </div>
- 
-        </div>
+        </form>
       </div>
-    </div>
-    <script
-      src="https://kit.fontawesome.com/eeb68990ce.js"
-      crossorigin="anonymous"
-    ></script>
 
-    <script src="/js/main.js"></script>
-  </body>
+    </div>
+  </div>
+  </div>
+  <script src="https://kit.fontawesome.com/eeb68990ce.js" crossorigin="anonymous"></script>
+
+  <script src="/js/main.js"></script>
+</body>
+
 </html>
