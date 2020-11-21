@@ -22,7 +22,7 @@ res.render("index")
 
 app.post("/",(req,res)=>{
     let data = req.body;
-res.render("availabletickets",{data})
+res.send(data);
 
 })
 app.get("/signup",(req,res)=>{
@@ -31,3 +31,4 @@ app.get("/signup",(req,res)=>{
 app.get("/signin",(req,res)=>{
     res.render("signin")
 })
+

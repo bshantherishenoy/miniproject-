@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  
   <link rel="stylesheet" href="/css/main.css" />
   <title>Easygo</title>
 </head>
@@ -37,9 +37,9 @@
           </a>
         </ul>
         <div class="modeoftransport">
-          <h4>PLANE</h4>
-          <h4>TRAIN</h4>
-          <h4>BUS</h4>
+          <h4 id="plane"><i class="fas fa-plane"></i>&nbsp;&nbsp;PLANE</h4>
+          <h4 id="train"><i class="fas fa-train"></i>&nbsp;&nbsp;TRAIN</h4>
+          <h4 id="bus"><i class="fas fa-bus"></i>&nbsp;&nbsp;BUS</h4>
         </div>
         <!-- form beginning -->
         <form action="/" method="POST">
@@ -49,7 +49,7 @@
             <!-- checkbox -->
             <div class="control-group">
               <label class="control control-checkbox">
-          Round Trip (Return Booking)
+          &nbsp;&nbsp;Round Trip (Return Booking)
                       <input name="checkbox" id="roundtripcheckbox" type="checkbox" >
                   <div class="control_indicator"></div>
               </label>
@@ -57,7 +57,7 @@
             <!-- checkbox -->
             <div class="ticketdetails">
               <div class="from">
-                <h3>FROM:</h3>
+                <h4>FROM:</h4>
                 <div class="from-details">
                   <select name="from" class="select-css from-select" required>
                     <option value="">--select--</option> 
@@ -70,7 +70,7 @@
                 </div>
               </div>
               <div class="to">
-                <h3>TO:</h3>
+                <h4>TO:</h4>
                 <div class="to-details">
                   <select name="to" class="select-css" required>
                     <option value="">--select--</option>
@@ -82,14 +82,9 @@
                   </select>
                 </div>
               </div>
-              <div class="departuredate">
-                <h3>DEPARTURE DATE:</h3>
-                <div class="departuredatedetails">
-                  <input name="date1" id="today" type="date" required>
-                </div>
-              </div>
+       
               <div class="passengers">
-                <h3>PASSENGERS:</h3>
+                <h4>PASSENGERS:</h4>
                 <div class="passenger-details">
                   <select name="adult" class="select-css" required>
                     <option value="">--ADULTS--</option>
@@ -120,14 +115,20 @@
                   </select>
                 </div>
               </div>
+              <div class="departuredate">
+                <h4>DEPARTURE DATE:</h4>
+                <div class="departuredatedetails">
+                  <input name="date1"id="today" type="date" required>
+                </div>
+              </div>
               <div class="returndate">
-                <h3>RETURN DATE :</h3>
+                <h4>RETURN DATE :</h4>
                 <div class="returndatedetails">
                   <input name="date2" id="returndatebooking" type="date" >
                 </div>
               </div>
             </div>
-            <input type="submit" class="availability" value="CHECK AVAILABILITY &nbsp;">
+            <input type="submit" class="availability" value="CHECK&nbsp; AVAILABILITY">
           </div>
         </form>
       </div>

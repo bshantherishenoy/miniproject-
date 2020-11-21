@@ -1,8 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");    /*logo and other content*/
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap'); /* navbar */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap'); /*navbar*/
 
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap'); /*availability button*/
+body{
+  font-family: 'Montserrat', sans-serif;
 
+}
 
 * {
   margin: 0;
@@ -15,21 +19,23 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
+  -moz-box-shadow: inset 0 0px 10px #000000;
+  -webkit-box-shadow: inset 0 0px 10px #000000;
+  box-shadow: inset 0 0px 10px t#000000;
 }
 /* main div */
 #bookingdiv {
- background-color: rgba(226, 226, 226,0.5);
+
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #274060 74%);
   height: 94vh;
   width: 90vw;
   border-radius: 30px;
 }
 /* main div image */
 .bookingimg {
-  position: absolute;
-  height: 60vh;
-  width: 90vw;
-  border-radius: 30px;
-  transition: all 0.4s ease-in-out;
+
+  display: none;
 }
 /* inside div */
 .booking-content {
@@ -47,7 +53,8 @@
   transform: scale(1.1);
 }
 .navbar {
-  font-family: 'Lora', serif;
+  font-family: 'Montserrat', sans-serif;
+
   letter-spacing: 1px;
 
   display: flex;
@@ -56,14 +63,14 @@
 }
 .navbar li {
  
-  color: black;
-  background-color: rgba(255, 255, 255, 0.8);
+  color: rgb(255, 255, 255);
+  background-color: transparent;
   font-weight: 1000;
   font-size: 1.2rem;
   margin-top: 1.2rem;
   margin-right: 2rem;
   padding: 1rem;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(255, 255, 255);
   border-radius: 10px 10px 0px 0px;
 }
 .navbar a {
@@ -74,18 +81,20 @@
 }
 .navbar li:hover {
   transform: scale(1.1);
-  background-color: rgba(255, 255, 255, 1);
+
   /* background-color: tomato; */
 
 }
 /* ticket booking div */
 
 .modeoftransport {
-  font-family: "Acme", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+
+  /* font-family: "Acme", sans-serif; */
   position: absolute;
-  top: 40.5vh;
-  left: 5.3vw;
-  width: 40vw;
+  top: 36.5vh;
+  left: 2.5vw;
+  width: 49.5vw;
   height: 10vw;
   border-radius: 20px 20px 0px 0px;
   background-color: black;
@@ -93,26 +102,38 @@
   display: flex;
   justify-content: space-around;
 }
+i{
+  pointer-events: none;
+}
 /* actual div for details of ticke */
 .ticketbooking {
-  font-family: "Acme", sans-serif;
+  /* font-family: "Acme", sans-serif; */
+  font-family: 'Montserrat', sans-serif;
+
   z-index: 2;
-  background-color: #e7eff9;
+
   -moz-box-shadow: inset 0 0px 10px #000000;
   -webkit-box-shadow: inset 0 0px 10px #000000;
   box-shadow: inset 0 0px 10px t#000000;
   position: absolute;
-  top: 48vh;
-  left: 5.2vw;
-  width: 80vw;
-  height: 19vw;
+  top: 44vh;
+  left: 2.4vw;
+  width: 85vw;
+  height: 43vh;
   background-color: rgb(255, 255, 255);
   border-radius: 0px 0px 20px 20px;
   margin-top: 0.7rem;
 }
 
+.ticketbookmode{
+  font-family: 'Montserrat', sans-serif;
+
+}
+
 .modeoftransport h4 {
-  font-size: 1.7rem;
+  /* font-size: 1.81rem; */
+
+font-size: 1.56rem;
   cursor: pointer;
   color: rgb(252, 252, 252);
   text-decoration: none;
@@ -135,25 +156,29 @@
 .from,.to,.departuredate,.passengers,.returndate{
   width: 18vw;
   padding: 0.5rem;
-  height: 21vh;
+  height: 21.6vh;
 border-radius: 10px;
 margin-right: 0.5rem;
 margin-left: 0.5rem;
 }
+
 .from{
-  border: 2px solid rgb(252, 136, 136);
+  border: 2px solid black;
 }
 .to{
-  border: 2px solid rgb(149, 202, 149);
+  border: 2px solid black;
 }
 .departuredate,.returndate{
-  border: 2px solid rgb(172, 158, 223);
+  border: 2px solid black;
 }
 .passengers{
-  border: 2px solid rgb(222, 223, 158);
+  border: 2px solid black;
 }
-.from h3,.to h3,.departuredate h3,.passengers h3,.returndate h3{
-  margin-bottom: 0.4rem;
+.from h4,.to h4,.departuredate h4,.passengers h4,.returndate h4{
+  margin-bottom: 1.3rem;
+}
+.from h4,.to h4,.departuredate h4,.returndate h4{
+  margin-bottom: 2rem;
 }
 .from-details,.to-details,.departuredatedetails,.passenger-details,.returndatedetails{
   display: flex;
@@ -168,9 +193,13 @@ margin-left: 0.5rem;
   padding: 0.1rem;
 }
 .ticketbooking h2{
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 0px 6px #000000;
   z-index: 2;
-background-color: rgb(191, 255, 255);
+  color: black;
+background-color: #fceef5;
 padding: 0.6rem;
+padding: 0.9rem 0 rem;
 border-radius: 2px 2px 0px 0px;
 text-align: center;
 }
@@ -192,7 +221,7 @@ text-align: center;
 
 
 /* select */
-.select-css {
+.select-css,.select-date {
 	display: block;
 	font-size: 16px;
 
@@ -245,29 +274,36 @@ text-align: center;
   border-radius: 10px;
   outline: 0;
   border: 0;
-  color: rgb(9, 10, 10);
-  background-color: rgb(99, 247, 106);
-  font-family: 'Slabo 27px', serif;
+background-color: rgba(3, 3, 3,0.89);
+color: white;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  letter-spacing: 0.09rem;
   cursor: pointer;
   position: absolute;
-  right: -50px;
-  bottom: -25px;
+  right: -30px;
+  bottom: -15px;
   padding: 1rem;
+  letter-spacing: 1px;
+  width: 18rem;
   font-size: 1.2rem;
 }
 .availability:hover{
-  background-color: rgb(30, 253, 41);
-  transform: scale(1.05)
+  background-color: rgba(3, 3, 3,1);
+  color: white;
+  transform: scale(1.02)
 }
-
+/* date */
+#today,#returndatebooking{
+  font-size: 1.3rem;
+  width: 12rem;
+}
 /* checkbox */
 .control-group{
-  font-size: 1rem;
+  font-size: 1.4rem;
   margin-top: 0.5rem;
 margin-left: 2rem;
-width: 250px;
+margin-bottom: 1rem;
+width: 480px;
 }
 .control {
   font-family: inherit;
@@ -278,6 +314,7 @@ width: 250px;
   padding-top: 5px;
   cursor: pointer;
   font-size: inherit;
+  margin-right: 1rem;
 }
   .control input {
       position: absolute;
@@ -288,8 +325,8 @@ width: 250px;
   position: absolute;
   top: 3px;
   left: 0;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   background: #d3d4d4;
   border: 0px solid #000000;
   border-radius: 0px;
@@ -321,10 +358,10 @@ width: 250px;
   display: block;
 }
 .control-checkbox .control_indicator:after {
-  left: 8px;
+  left: 12px;
   top: 4px;
-  width: 3px;
-  height: 8px;
+  width: 6px;
+  height: 16px;
   border: solid #ffffff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);

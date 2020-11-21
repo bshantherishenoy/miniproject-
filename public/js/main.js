@@ -8,71 +8,50 @@ const roundtripcheckbox = document.querySelector("#roundtripcheckbox")
 const returndatebooking = document.querySelector("#returndatebooking");
 const transportmodeinput = document.querySelector("#transportmodeinput");
 
+
 //by default date will be disabled
 returndatebooking.disabled = true;
 
 
 // caraousel
-let random = Math.floor(Math.random() * 5) + 1;
-let currentslide = 1;
-document.addEventListener("DOMContentLoaded", caraouselslider(random));
-console.log({ random });
 
-function caraouselslider(random) {
-  currentslide = random;
-  bookingimg.src = `/img/mainbg${random}.jpg`;
-}
-function nextslide() {
-  if (currentslide === 5) {
-    currentslide = 1;
-  } else {
-    currentslide++;
+
+modeoftransport.addEventListener("click", (e) => {
+  console.log(e.target.id)
+  if (e.target.id == 'train') {
+    ticketbookingh2.textContent = 'TRAIN BOOKING'
+    transportmodeinput.value = 'TRAIN'
   }
-  bookingimg.src = `/img/mainbg${currentslide}.jpg`;
-}
 
+  else if (e.target.id === 'bus') {
+    ticketbookingh2.style.backgroundColor = `#fceef5`;
+    ticketbookingh2.textContent = 'BUS BOOKING';
+    ticketbookingh2.style.color = '<b></b>lack';
+    transportmodeinput.value = 'BUS'
+  }
+  else {
+    ticketbookingh2.style.backgroundColor = `#fceef5`;
+    ticketbookingh2.textContent = 'PLANE BOOKING';
+    ticketbookingh2.style.color = 'black';
+    transportmodeinput.value = 'PLANE'
+  }
 
-
-const caraouselinterval = setInterval(() => {
-  nextslide();
-}, 5000);
-
-
-modeoftransport.addEventListener("click",(e)=>{
-    console.log(e.target.textContent)
-    if(e.target.textContent === 'TRAIN'){
-      ticketbookingh2.style.backgroundColor = `rgb(234, 250, 178)`;
-       ticketbookingh2.textContent = 'TRAIN BOOKING'
-       transportmodeinput.value = 'TRAIN'
+  modeoftransportvalue.forEach((value) => {
+    if (value.textContent === e.target.textContent) {
+      value.style.backgroundColor = 'whitesmoke';
+      value.style.color = 'black'
     }
-    else if(e.target.textContent === 'BUS'){
-      ticketbookingh2.style.backgroundColor = `rgb(250, 178, 178)`;
-        ticketbookingh2.textContent = 'BUS BOOKING'
-       transportmodeinput.value = 'BUS'
-
-     }
-     else{
-      ticketbookingh2.style.backgroundColor = `rgb(191, 255, 255)`;
-        ticketbookingh2.textContent = 'PLANE BOOKING'
-       transportmodeinput.value = 'PLANE'
-     }
-  
-modeoftransportvalue.forEach((value)=>{
-    if(value.textContent === e.target.textContent){
-        value.style.backgroundColor = 'whitesmoke';
-        value.style.color = 'black'
+    else {
+      value.style.backgroundColor = 'black';
+      value.style.color = 'white'
     }
-    else{
-        value.style.backgroundColor = 'black';
-        value.style.color = 'white'
-    }
-})
+  })
 })
 
 
 //checkbox if not checked disable date of return booking
-roundtripcheckbox.addEventListener("click",()=>{
-  if (roundtripcheckbox.checked == true){
+roundtripcheckbox.addEventListener("click", () => {
+  if (roundtripcheckbox.checked == true) {
     returndatebooking.disabled = false;
     returndatebooking.required = true;
   } else {
