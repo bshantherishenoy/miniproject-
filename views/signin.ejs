@@ -42,9 +42,28 @@
         <div class="sign-up-form">
             <i class="far fa-user-circle fa-4x"></i>
             <h1>Sign In</h1>
-            <form class="" action="index.html" method="post">
-              <input type="email" class="input-box" placeholder="Your Email">
-              <input type="password" class="input-box" placeholder="Your Password">
+            <!-- error message -->
+            <% if(errormessages) {%> 
+            <h6><% if(errormessages.length > 0){%> 
+              <div class="errormessage">
+                <%= errormessages %> 
+              </div>
+            <% } %> 
+          </h6>
+            <% } %> 
+            <!-- successmesaage -->
+            <% if(successmessages) {%> 
+              <h6><% if(successmessages.length > 0){%> 
+                <div class="successmessage">
+                  <%= successmessages %> 
+                </div>
+              <% } %> 
+            </h6>
+              <% } %> 
+        
+            <form class="" action="/signin" method="POST">
+              <input type="email" name="email" class="input-box" placeholder="Your Email" required>
+              <input type="password"  name="password"class="input-box" placeholder="Your Password" required>
               <p><span> <input class="check" type="checkbox" > </span>Remember me</p>
               <hr>
              <input class="btn btn-primary" type="submit" value="Submit">

@@ -42,10 +42,19 @@
         <div class="sign-up-form">
             <i class="far fa-user-circle fa-4x"></i>
             <h1>Sign up Now</h1>
-            <form class="" action="index.html" method="post">
-              <input type="email" class="input-box" placeholder="Your Email">
-              <input type="password" class="input-box" placeholder="Your Password">
-              <input type="password" class="input-box" placeholder="Re-enter your password">
+            <% if(errormessages) {%> 
+              <h6><% if(errormessages.length > 0){%> 
+                <div class="errormessage">
+                  <%= errormessages %> 
+                </div>
+              <% } %> 
+              <% } %> 
+            <form class="" action="/signup" method="POST">
+              <input name="email" type="email" class="input-box" placeholder="Your Email" required>
+              <span id="msg"></span>
+              <input name="password" type="password" class="input-box" placeholder="Your Password" onkeyup="validatePassword(this.value);" required>
+
+              <input name="confirmpassword" type="password" class="input-box" placeholder="Re-enter your password" required>
               <!-- <p><span><input class="check" type="checkbox" ></span>I agree to the Terms and Conditions</p> -->
               <!-- <button type="button" class="signup-btn">Sign up</button -->
                 <input class="btn btn-primary" type="submit" value="Sign up">
@@ -69,6 +78,7 @@
   </div>
 
   <script src="https://kit.fontawesome.com/eeb68990ce.js" crossorigin="anonymous"></script>
+  <script src="/js/sign.js"></script>
 <!-- <script src="/js/availabletickets.js"></script> -->
 </body>
 

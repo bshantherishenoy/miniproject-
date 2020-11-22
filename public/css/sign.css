@@ -195,3 +195,16 @@ hr{
 .check{
   margin: 10px;
 }
+.errormessage{
+  color: red;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.successmessage{
+
+  font-weight: bold;
+  color: rgb(0, 255, 13);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+
+}
