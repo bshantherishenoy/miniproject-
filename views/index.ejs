@@ -20,23 +20,46 @@
       </div>
       <img class="bookingimg" src="/img/loading2.jpg" alt="Bad Request" />
       <div class="booking-content">
-        <ul class="navbar">
-          <a href="">
-            <h2 id="logo">EasyGo</h2>
-          </a>
-          <a href="/">
-            <li>HOME</li>
-          </a>
-          <a href="/aboutus">
-            <li>ABOUT US</li>
-          </a>
-          <a href="/signin">
-            <li>SIGN IN</li>
-          </a>
-          <a href="/signup">
-            <li>SIGN UP</li>
-          </a>
-        </ul>
+        <% if(navbar.length > 0) {%>
+
+          <ul class="navbar">
+            <a href="">
+              <h2 id="logo">EasyGo</h2>
+            </a>
+            <a href="/">
+              <li>HOME</li>
+            </a>
+            <a href="/aboutus">
+              <li>ABOUT US</li>
+            </a>
+            <a href="/mybookings">
+              <li>MY BOOKINGS</li>
+            </a>
+            <a href="/myprofile">
+              <li>MY PROFILE</li>
+            </a>
+          </ul>
+          
+          <% } else { %>
+          
+            <ul class="navbar">
+              <a href="">
+                <h2 id="logo">EasyGo</h2>
+              </a>
+              <a href="/">
+                <li>HOME</li>
+              </a>
+              <a href="/aboutus">
+                <li>ABOUT US</li>
+              </a>
+              <a href="/signin">
+                <li>SIGN IN</li>
+              </a>
+              <a href="/signup">
+                <li>SIGN UP</li>
+              </a>
+            </ul>
+          <% } %> 
         <div class="modeoftransport">
           <h4 id="plane"><i class="fas fa-plane"></i>&nbsp;&nbsp;PLANE</h4>
           <h4 id="train"><i class="fas fa-train"></i>&nbsp;&nbsp;TRAIN</h4>

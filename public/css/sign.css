@@ -196,11 +196,14 @@ hr{
   margin: 10px;
 }
 .errormessage{
-  color: red;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  color: rgb(253, 42, 42);
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
 }
 .successmessage{
+  letter-spacing: 0.9px;
 
   font-weight: bold;
   color: rgb(0, 255, 13);
