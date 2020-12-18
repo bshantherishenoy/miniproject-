@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Easygo</title>
+
+    <link rel="stylesheet" href="/css/train.css">
+    <script src="https://kit.fontawesome.com/0f19c2ec8e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="first">
+        <nav class="navbar navbar-expand-md ">
+            <!-- Brand -->
+            <h1><i class="fas fa-train"></i>TRAIN <span class="returnbook"></span></h1>
+            <div class="nav-item dropdown ml-auto">
+                <h4 class=" dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <i class="far fa-user-circle"></i>User</h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/home">Home</a>
+                    <a class="dropdown-item" href="/myprofile">My Profile</a>
+                    <a class="dropdown-item" href="/myboohings">My Bookings</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="hr">
+        <hr>
+    </div>
+    <!-- 1 MORE NAV -->
+    <div class="container">
+        <ul class="nav nav-pills nav-justified" style="background-color:#00416d; color:#fff;">
+            <li class="nav-item">
+                <h4><i class="far fa-dot-circle"></i>From: <span class="from"></span> </h4>
+            </li>
+            <li class="nav-item">
+                <h4><i class="fas fa-map-marker-alt"></i>To: <span class="to"></span></h4>
+            </li>
+        </ul>
+        <ul class="nav nav-pills nav-justified " style="margin-bottom:10px;background-color:#cfd3ce;">
+            <li class="nav-item" style="text-align: center;">
+                <h4><i class="far fa-calendar-alt"></i>Date: <span class="date"></span></h4>
+            </li>
+        </ul>
+
+        <div class="tickets">
+            <!-- <div class="row 1t">
+            <div class="col-3">
+                <h4><strong>YPR HWH FEST SPL</strong></h4>
+                <p>Departs on-<span class="latoBold weeklySchedule">
+            <span title="Sunday"class="sp" >S</span>
+                    <span title="Monday" class="sp">M</span>
+                    <span title="Tuesday" class="sp">T</span>
+                    <span title="Wednesday" class="sp">W</span>
+                    <span title="Thursday" class="sp">T</span>
+                    <span title="Friday" class="sp">F</span>
+                    <span title="Saturday">S</span>
+                    </span>
+                </p>
+            </div>
+            <div class="col-1">
+                <h4><strong>7:30</strong>pm</h4>
+            </div>
+            <div class="col-3">
+                <ul class="items1">
+                    <li><strong>1d 10h 50m</strong></li>
+                    <li>---------------------------</li>
+                    <li><strong>1962kms</strong></li>
+                </ul>
+            </div>
+            <div class="col-1">
+                <h4><strong>6:25</strong>am</h4>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg offset-6" data-toggle="modal" data-target="#exampleModal">BOOK NOW</button>
+            </div>
+        
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">SELECT A CLASS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="radio" id="1A" name="AC" value="1A">
+                            <label for="1A">1A</label>
+                            <input type="radio" id="EC" name="AC" value="EC">
+                            <label for="EC">EC</label>
+                            <input type="radio" id="2A" name="AC" value="2A">
+                            <label for="2A">2A</label>
+                            <input type="radio" id="FC" name="AC" value="FC">
+                            <label for="FC">FC</label>
+                            <input type="radio" id="3A" name="AC" value="3A">
+                            <label for="2A">3A</label>
+                            <input type="radio" id="SL" name="AC" value="SL">
+                            <label for="SL">SL</label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row 2t">
+            <div class="col-3">
+                <h4><strong>YPR BGP FEST SPL</strong></h4>
+                <p>Departs on-<span class="latoBold weeklySchedule">
+            <span title="Sunday" >S</span>
+                    <span title="Monday">M</span>
+                    <span title="Tuesday">T</span>
+                    <span title="Wednesday">W</span>
+                    <span title="Thursday">T</span>
+                    <span title="Friday">F</span>
+                    <span title="Saturday" class="sp">S</span>
+                    </span>
+                </p>
+            </div>
+            <div class="col-1">
+                <h4><strong>1:30</strong>pm</h4>
+            </div>
+            <div class="col-3">
+                <ul class="items1">
+                    <li><strong>1d 9h 10m</strong></li>
+                    <li>---------------------------</li>
+                    <li><strong>1982kms</strong></li>
+                </ul>
+            </div>
+            <div class="col-1">
+                <h4><strong>10:40</strong>pm</h4>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg offset-6" data-toggle="modal" data-target="#exampleModal">BOOK NOW</button>
+            </div>
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">SELECT A CLASS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row 3t">
+            <div class="col-3">
+                <h4><strong>HKA FEST SPL</strong></h4>
+                <p>Departs on-<span class="latoBold weeklySchedule">
+            <span title="Sunday" >S</span>
+                    <span title="Monday">M</span>
+                    <span title="Tuesday">T</span>
+                    <span title="Wednesday">W</span>
+                    <span title="Thursday" class="sp">T</span>
+                    <span title="Friday" class="sp">F</span>
+                    <span title="Saturday">S</span>
+                    </span>
+                </p>
+            </div>
+            <div class="col-1">
+                <h4><strong>6:57</strong>am</h4>
+            </div>
+            <div class="col-3">
+                <ul class="items1">
+                    <li><strong> 20h 38m</strong></li>
+                    <li>---------------------------</li>
+                    <li><strong>1382kms</strong></li>
+                </ul>
+            </div>
+            <div class="col-1">
+                <h4><strong>3:40</strong>am</h4>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg offset-6" data-toggle="modal" data-target="#exampleModal">BOOK NOW</button>
+            </div>
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">SELECT A CLASS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row 4t">
+            <div class="col-3">
+                <h4><strong>APA FEST SPL</strong></h4>
+                <p>Departs on-<span class="latoBold weeklySchedule">
+            <span title="Sunday" >S</span>
+                    <span title="Monday">M</span>
+                    <span title="Tuesday">T</span>
+                    <span title="Wednesday" class="sp">W</span>
+                    <span title="Thursday">T</span>
+                    <span title="Friday">F</span>
+                    <span title="Saturday" class="sp">S</span>
+                    </span>
+                </p>
+            </div>
+            <div class="col-1">
+                <h4><strong>7:30</strong>am</h4>
+            </div>
+            <div class="col-3">
+                <ul class="items1">
+                    <li><strong> 20h 45m</strong></li>
+                    <li>---------------------------</li>
+                    <li><strong>1302kms</strong></li>
+                </ul>
+            </div>
+            <div class="col-1">
+                <h4><strong>3:30</strong>am</h4>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg offset-6" data-toggle="modal" data-target="#exampleModal">BOOK NOW</button>
+            </div>
+     
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">SELECT A CLASS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr> -->
+        </div>
+    </div>
+    <script src="/js/train.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+
+</html>

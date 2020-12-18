@@ -1,0 +1,31 @@
+{
+    "plane": [{
+        "flightnames": {
+            "flight1": "Air India",
+            "flight2": "Vistara",
+            "flight3": "IndiGo",
+            "flight4": "GoAir",
+            "flight5": "Air India Express",
+            "flight6": "SpiceJet",
+            "flight7": "AirAsia India"
+        },
+        "flightlogos": {
+            "flight1": "/img/airindia.png",
+            "flight2": "/img/vistara.jpg",
+            "flight3": "/img/indigo.jpg",
+            "flight4": "/img/goair.png",
+            "flight5": "/img/airindiaexpress.png",
+            "flight6": "/img/spicejet.jpg",
+            "flight7": "/img/airasia.png"
+        },
+        "flightid": {
+            "flight1": "AI",
+            "flight2": "VT",
+            "flight3": "IN",
+            "flight4": "GA",
+            "flight5": "AIE",
+            "flight6": "SJ",
+            "flight7": "AS"
+        }
+    }]
+}

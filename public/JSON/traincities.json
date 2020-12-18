@@ -1,0 +1,162 @@
+{
+    "train": [{
+            "bengaluru": [{
+                    "chennai": [{
+                        "train1": "SBCMAS SHATABDI(02028)",
+                        "train2": "SBC MAS FEST SPL(02658)",
+                        "train3": "MAS DOUBLEDEKEXP(06076)",
+                        "train4": "SBC MAS FEST SPL(02608)",
+                        "train5": "SANGHAMITRA EXP(02295)",
+                        "train6": "SMYS DBG FEST SPL(02578)",
+                        "train7": "YPRPPTA FEST SPL(03252)",
+                        "train8": "SBCDNR HUMSAFAR(06509)"
+                    }]
+                },
+                {
+                    "delhi": {
+                        "train1": "SBC NDLS AC EXP(02691)",
+                        "train2": "SSBC NDLS EXP(06527)",
+                        "train3": "YPRNZM HUMSAFAR(06523)",
+                        "train4": "SAMPARK KRANTI(02629)"
+                    }
+                },
+                {
+                    "mumbai": {
+                        "train1": "CBE LTT SPL(01014)",
+                        "train2": "UDYAN EXP(01302)",
+                        "train3": "SBC JU FEST SPL(06508)",
+                        "train4": "MYS AII FEST SPL(06210)",
+                        "train5": "BARMER AC EXP(04805)"
+                    }
+                },
+                {
+                    "hyderabad": {
+                        "train1": "CBE LTT SPL(01014)",
+                        "train2": "UDYAN EXP(01302)",
+                        "train3": "SBC JU FEST SPL(06508)",
+                        "train4": "MYS AII FEST SPL(06210)",
+                        "train5": "BARMER AC EXP(04805)"
+                    }
+                }
+            ]
+        },
+        {
+            "chennai": [{
+                    "bengaluru": {
+                        "train1": "MAS SBC SHTABDI(02027)",
+                        "train2": "MAS SBC FEST SPL(02657)",
+                        "train3": "MAS SBC FEST SPL(02657)",
+                        "train4": "MAS SBC FEST SPL(02607)",
+                        "train5": "DNR SBC HUMSAFAR(06510)"
+                    }
+                },
+                {
+                    "delhi": {
+                        "train1": "MAS NZM DURONTO(02269)",
+                        "train2": "MAS NDLS EXPRESS(02621)",
+                        "train3": "MAS NDLS EXP(02615)"
+                    }
+                },
+                {
+                    "mumbai": {
+                        "train1": "MAS LTT EXPRESS(02164)"
+                    }
+                },
+                {
+                    "hyderabad": {
+                        "train1": "HYB FEST SPL(02759)"
+                    }
+                }
+            ]
+        },
+        {
+            "delhi": [{
+                    "bengaluru": {
+                        "train1": "NDLS SBC SPL(02692)",
+                        "train2": "NDLS SBC SF SPL(06528)",
+                        "train3": "YPR S KRNTI SPL(02630)"
+                    }
+                },
+                {
+                    "chennai": {
+                        "train1": "NDLS MAS SF SPL(02622)",
+                        "train2": "G T EXP SPL(02616)"
+                    }
+                },
+                {
+                    "mumbai": {
+                        "train1": "MMCT RAJ SPL(02952)",
+                        "train2": "AUG KR RAJ SPL(02954)",
+                        "train3": "NZM MAO SPL(02414)",
+                        "train4": "NZM PUNE AC SPL(02494)",
+                        "train5": "GOLDN TEMPLE SPL(02904)"
+                    }
+                },
+                {
+                    "hyderabad": {
+                        "train1": "NDLS SBC SPL(02692)",
+                        "train2": "SC DURONTO SPL(02286)",
+                        "train3": "TELANGANA E SPL(02724)"
+                    }
+                }
+            ]
+        },
+        {
+            "mumbai": [{
+                    "bengaluru": {
+                        "train1": "CSMT SBC SPL(01301)",
+                        "train2": "LTT CBE SPL(01013)",
+                        "train3": "MYS FESTIVL SPL(06209)"
+                    }
+                },
+                {
+                    "chennai": {
+                        "train1": "MAS FESTIVAL SPL(02163)"
+                    }
+                },
+                {
+                    "delhi": {
+                        "train1": "NDLS RAJ SPL(02951)",
+                        "train2": "NZM DURONTO SPL(02263)",
+                        "train3": "NZM RAJDHANI SPL(02953)",
+                        "train4": "BDTS NZM YUVA E(09047)",
+                        "train5": "TVC NDLS EXP(02431)"
+                    }
+                },
+                {
+                    "hyderabad": {
+                        "train1": "CSMT BBS SPL(01019)",
+                        "train2": "CSMT HYB SPL(02701)"
+                    }
+                }
+            ]
+        },
+        {
+            "hyderabad": [{
+                    "bengaluru": {
+                        "train1": "MYS FESTVL SPL(02785)",
+                        "train2": "NDLS SBC SPL(02692)",
+                        "train3": "JP MYSORE EXP(02976)"
+                    }
+                },
+                {
+                    "chennai": {
+                        "train1": "TBM FESTVL SPL(02760)"
+                    }
+                },
+                {
+                    "delhi": {
+                        "train1": "SBC NDLS AC EXP(02691)",
+                        "train2": "HYB NDLS SPL(02723)"
+                    }
+                },
+                {
+                    "mumbai": {
+                        "train1": "HYB CSMT SPL(02702)",
+                        "train2": "HYB CSMT SPL(07032)"
+                    }
+                }
+            ]
+        }
+    ]
+}

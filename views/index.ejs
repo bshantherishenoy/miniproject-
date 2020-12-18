@@ -2,115 +2,121 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <link rel="stylesheet" href="/css/main.css" />
-  <script src="https://kit.fontawesome.com/eeb68990ce.js" crossorigin="anonymous"></script>
-  <title>Easygo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="https://kit.fontawesome.com/eeb68990ce.js" crossorigin="anonymous"></script>
+    <title>Easygo</title>
 </head>
 
 <body>
-  <!-- <img id="bgimg"  src="/img/bgimg.jpg" alt="Bad Request" /> -->
-  <div id="main">
-    <div id="bookingdiv">
-      <div class="caraouselslider">
-        <i class="fas fa-chevron-left slider slider-left"></i>
-        <i class="fas fa-chevron-right slider slider-right"></i>
-      </div>
-      <img class="bookingimg" src="/img/loading2.jpg" alt="Bad Request" />
-      <div class="booking-content">
-        <% if(navbar.length > 0) {%>
+    <!-- <img id="bgimg"  src="/img/bgimg.jpg" alt="Bad Request" /> -->
+    <div id="main">
+        <div id="bookingdiv">
+            <div class="caraouselslider">
+                <i class="fas fa-chevron-left slider slider-left"></i>
+                <i class="fas fa-chevron-right slider slider-right"></i>
+            </div>
+            <img class="bookingimg" src="/img/loading2.jpg" alt="Bad Request" />
+            <div class="booking-content">
+                <% if(navbar.length > 0) {%>
 
-          <ul class="navbar">
-            <a href="">
-              <h2 id="logo">EasyGo</h2>
-            </a>
-            <a href="/">
-              <li>HOME</li>
-            </a>
-            <a href="/aboutus">
-              <li>ABOUT US</li>
-            </a>
-            <a href="/mybookings">
-              <li>MY BOOKINGS</li>
-            </a>
-            <a href="/myprofile">
-              <li>MY PROFILE</li>
-            </a>
-          </ul>
-          
-          <% } else { %>
-          
-            <ul class="navbar">
-              <a href="">
-                <h2 id="logo">EasyGo</h2>
-              </a>
-              <a href="/">
-                <li>HOME</li>
-              </a>
-              <a href="/aboutus">
-                <li>ABOUT US</li>
-              </a>
-              <a href="/signin">
-                <li>SIGN IN</li>
-              </a>
-              <a href="/signup">
-                <li>SIGN UP</li>
-              </a>
-            </ul>
-          <% } %> 
-        <div class="modeoftransport">
-          <h4 id="plane"><i class="fas fa-plane"></i>&nbsp;&nbsp;PLANE</h4>
-          <h4 id="train"><i class="fas fa-train"></i>&nbsp;&nbsp;TRAIN</h4>
-          <h4 id="bus"><i class="fas fa-bus"></i>&nbsp;&nbsp;BUS</h4>
-        </div>
-        <!-- form beginning -->
-        <form action="/" method="POST">
-          <input  id ="transportmodeinput" name="transport" type="text" value="PLANE"> <!-- This field is hidden-->
-          <div class="ticketbooking">
-            <h2>PLANE BOOKING</h2>
-            <!-- checkbox -->
-            <div class="control-group">
-              <label class="control control-checkbox">
+                    <ul class="navbar">
+                        <a href="">
+                            <h2 id="logo">EasyGo</h2>
+                        </a>
+                        <a href="/">
+                            <li>HOME</li>
+                        </a>
+                        <a href="/aboutus">
+                            <li>ABOUT US</li>
+                        </a>
+                        <a href="/mybookings">
+                            <li>MY BOOKINGS</li>
+                        </a>
+                        <a href="/myprofile">
+                            <li>MY PROFILE</li>
+                        </a>
+                    </ul>
+
+                    <% } else { %>
+
+                        <ul class="navbar">
+                            <a href="">
+                                <h2 id="logo">EasyGo</h2>
+                            </a>
+                            <a href="/">
+                                <li>HOME</li>
+                            </a>
+                            <a href="/aboutus">
+                                <li>ABOUT US</li>
+                            </a>
+                            <a href="/signin">
+                                <li>SIGN IN</li>
+                            </a>
+                            <a href="/signup">
+                                <li>SIGN UP</li>
+                            </a>
+                        </ul>
+                        <% } %>
+                            <div class="modeoftransport">
+                                <h4 id="plane"><i class="fas fa-plane"></i>&nbsp;&nbsp;PLANE</h4>
+                                <h4 id="train"><i class="fas fa-train"></i>&nbsp;&nbsp;TRAIN</h4>
+                                <h4 id="bus"><i class="fas fa-bus"></i>&nbsp;&nbsp;BUS</h4>
+                            </div>
+                            <!-- form beginning -->
+                            <form action="/home" method="POST">
+                                <input id="transportmodeinput" name="transport" type="text" value="PLANE">
+                                <!-- This field is hidden-->
+                                <div class="ticketbooking">
+                                    <h2>PLANE BOOKING</h2>
+                                    <% if(errormessages.length > 0) {%>
+                                        <h3 class="errormessage">
+                                            <%= errormessages  %>
+                                        </h3>
+                                        <% } %>
+                                            <!-- checkbox -->
+                                            <div class="control-group">
+                                                <label class="control control-checkbox">
           &nbsp;&nbsp;Round Trip (Return Booking)
                       <input name="checkbox" id="roundtripcheckbox" type="checkbox" >
                   <div class="control_indicator"></div>
               </label>
-          </div>
-            <!-- checkbox end-->
-            <div class="ticketdetails">
-              <div class="from">
-                <h4>FROM:</h4>
-                <div class="from-details">
-                  <select name="from" class="select-css from-select" required>
+                                            </div>
+                                            <!-- checkbox end-->
+                                            <div class="ticketdetails">
+                                                <div class="from">
+                                                    <h4>FROM:</h4>
+                                                    <div class="from-details">
+                                                        <select name="from" class="select-css from-select" required>
                     <option value="">--select--</option> 
-                    <option value="BANGLORE">BANGLORE</option>
+                    <option value="BANGLORE">BENGALURU</option>
                     <option value="CHENNAI">CHENNAI</option>
                     <option value="MUMBAI">MUMBAI</option>
                     <option value="DELHI">DELHI</option>
                     <option  value="HYDERABAD">HYDERABAD</option>
                   </select>
-                </div>
-              </div>
-              <div class="to">
-                <h4>TO:</h4>
-                <div class="to-details">
-                  <select name="to" class="select-css" required>
+                                                    </div>
+                                                </div>
+                                                <div class="to">
+                                                    <h4>TO:</h4>
+                                                    <div class="to-details">
+                                                        <select name="to" class="select-css" required>
                     <option value="">--select--</option>
-                    <option value="BANGLORE">BANGLORE</option>
+                    <option value="BANGLORE">BENGALURU</option>
                     <option value="CHENNAI">CHENNAI</option>
                     <option value="MUMBAI">MUMBAI</option>
                     <option value="DELHI">DELHI</option>
                     <option value="HYDERABAD">HYDERABAD</option>
                   </select>
-                </div>
-              </div>
-       
-              <div class="passengers">
-                <h4>PASSENGERS:</h4>
-                <div class="passenger-details">
-                  <select name="adult" class="select-css" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="passengers">
+                                                    <h4>PASSENGERS:</h4>
+                                                    <div class="passenger-details">
+                                                        <select name="adult" class="select-css" required>
                     <option value="">--ADULTS--</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -123,7 +129,7 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                   </select>
-                  <select name="children" class="select-css" required>
+                                                        <select name="children" class="select-css" required>
                     <option value=""> --CHILDREN--</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -137,32 +143,32 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                   </select>
-                </div>
-              </div>
-              <div class="departuredate">
-                <h4>DEPARTURE DATE:</h4>
-                <div class="departuredatedetails">
-                  <input name="date1"id="today" type="date" required>
-                </div>
-              </div>
-              <div class="returndate">
-                <h4>RETURN DATE :</h4>
-                <div class="returndatedetails">
-                  <input name="date2" id="returndatebooking" type="date" >
-                </div>
-              </div>
+                                                    </div>
+                                                </div>
+                                                <div class="departuredate">
+                                                    <h4>DEPARTURE DATE:</h4>
+                                                    <div class="departuredatedetails">
+                                                        <input name="date1" id="today" type="date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="returndate">
+                                                    <h4>RETURN DATE :</h4>
+                                                    <div class="returndatedetails">
+                                                        <input name="date2" id="returndatebooking" type="date">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="submit" class="availability" value="CHECK&nbsp; AVAILABILITY">
+                                </div>
+                            </form>
             </div>
-            <input type="submit" class="availability" value="CHECK&nbsp; AVAILABILITY">
-          </div>
-        </form>
-      </div>
 
+        </div>
     </div>
-  </div>
-  </div>
- 
+    </div>
 
-  <script src="/js/main.js"></script>
+
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

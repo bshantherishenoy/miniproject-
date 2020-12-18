@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Easygo</title>
+
+    <link rel="stylesheet" href="/css/flight.css">
+    <script src="https://kit.fontawesome.com/0f19c2ec8e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="first">
+        <nav class="navbar navbar-expand-md ">
+            <!-- Brand -->
+            <h1><i class="fas fa-plane"></i>FLIGHT</h1>
+<span class="returnbook"></span>
+
+            <div class="nav-item dropdown ml-auto">
+                <h4 class=" dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <i class="far fa-user-circle"></i>User
+                </h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/home">Home</a>
+                    <a class="dropdown-item" href="/myprofile">My Profile</a>
+                    <a class="dropdown-item" href="/myboohings">My Bookings</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <hr>
+    <section id="tables">
+        <div class="row">
+            <div class="column left">
+                <h3><i class="fas fa-globe-asia"></i>Planes avaliable</h3>
+                <div class="check">
+                    <form class="f_a">
+                        <h4><i class="far fa-calendar-alt"></i>Date:
+                            <span class="Date"></span></h4>
+                        <br>
+                        <!-- <input type="checkbox" id="vehicle">
+                        <label for="vehicle1"><h4>AirIndia</h4></label><br><br>
+                        <input type="checkbox" id="vehicle">
+                        <label for="vehicle2"><h4>IndiGo</h4></label><br><br>
+                        <input type="checkbox" id="vehicle">
+                        <label for="vehicle3"><h4>Vistara</h4></label><br><br>
+                        <input type="checkbox" id="vehicle">
+                        <label for="vehicle3"><h4>SpiceJet</h4></label><br><br>
+                        <input type="checkbox" id="vehicle">
+                        <label for="vehicle3"><h4>AirAsia India</h4></label><br><br> -->
+                    </form>
+                </div>
+            </div>
+            <div class="vertical"></div>
+            <div class="column right">
+
+                <ul class="nav nav-pills nav-justified bg-warning" style="margin-bottom:10px">
+                    <li class="nav-item">
+                        <h4><i class="fas fa-plane-departure"></i>From: <span class="from"></span> </h4>
+                    </li>
+                    <li class="nav-item">
+                        <h4><i class="fas fa-plane-arrival"></i>To: <span class="to"></span></h4>
+                    </li>
+                </ul>
+                <div class="container">
+                    <!-- <div class="veh1">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://i.pinimg.com/originals/5f/9b/e5/5f9be5876eda5d373d7f91a8faf5e659.jpg" alt="air India" class="sa">
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Air India</h4>
+                                <h4>|AI-537</h4>
+                                <h4>Avaliable Seats :8</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Price: <i class="fas fa-rupee-sign"></i>4100</h4>
+                                <h4>Dur:- 1:55 - 4:35</h4>
+                                <button type="button" class="btn btn-success btn-lg btn-link " style="color:#FFf;">Book Now <i class="fas fa-angle-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="veh2">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/IndiGo_logo.svg" alt="IndiGo" class="sa">
+                            </div>
+                            <div class="col-md-4">
+                                <h4>IndiGo</h4>
+                                <h4>|6F-2</h4>
+                                <h4>Avaliable Seats :9</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Price: <i class="fas fa-rupee-sign"></i>6140</h4>
+                                <h4>Dur:- 09:55 - 12:35</h4>
+                                <button type="button" class="btn btn-success btn-lg btn-link" style="color:#FFf;">Book Now <i class="fas fa-angle-right"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="veh3">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/b/bf/Vistara_logo.svg" alt="Vistara" class="sa">
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Vistara</h4>
+                                <h4>|VT-087</h4>
+                                <h4>Avaliable Seats :10</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Price: <i class="fas fa-rupee-sign"></i>3900</h4>
+                                <h4>Dur:- 05:55 - 08:35</h4>
+                                <button type="button" class="btn btn-success btn-lg btn-link " style="color:#FFf;">Book Now <i class="fas fa-angle-right"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="veh4">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/9/9c/SpiceJet_logo.svg" alt="SpiceJet" class="sa">
+                            </div>
+                            <div class="col-md-4">
+                                <h4>SpiceJet</h4>
+                                <h4>|SJ-2050</h4>
+                                <h4>Avaliable Seats :9</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Price: <i class="fas fa-rupee-sign"></i>5900</h4>
+                                <h4>Dur:- 12:55 - 14:35</h4>
+                                <button type="button" class="btn btn-success btn-lg btn-link" style="color:#FFf;">Book Now <i class="fas fa-angle-right"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="veh5">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/AirAsia_New_Logo.svg" alt="AirAsia" class="sa">
+                            </div>
+                            <div class="col-md-4">
+                                <h4>AirAsia</h4>
+                                <h4>|AS-321</h4>
+                                <h4>Avaliable Seats :6</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Price: <i class="fas fa-rupee-sign"></i>6100</h4>
+                                <h4>Dur:- 15:55 - 20:35</h4>
+                                <button type="button" class="btn btn-success btn-lg btn-link" style="color:#FFf;">Book Now <i class="fas fa-angle-right"></i></button>
+                            </div>
+
+                        </div>
+                    </div> -->
+
+
+                    <!--  -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script src="/js/flight.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+
+</html>

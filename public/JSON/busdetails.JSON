@@ -1,0 +1,10 @@
+{
+    "bus": [{
+        "class": {
+            "class1": "AC NON-SL",
+            "class2": "AC SL",
+            "class3": "NON-AC NON-SL",
+            "class4": "NON AC SL"
+        }
+    }]
+}

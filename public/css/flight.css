@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+body {
+    margin: 10px;
+}
+
+h1 {
+    font-family: 'Ubuntu', sans-serif;
+    color: #222831;
+}
+
+.first {
+    margin: 20px;
+}
+
+.fa-plane {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.left {
+    width: 25%;
+    margin-left: 20px;
+    padding: 10px 20px;
+}
+
+.right {
+    width: 73%;
+    padding: 5px 20px;
+}
+
+.vertical {
+    border-left: 1px solid #212529;
+    height: 790px;
+}
+
+.fa-globe-asia {
+    margin-right: 10px;
+}
+
+.f_a {
+    margin-top: 30px;
+}
+
+#vehicle {
+    width: 20px;
+    height: 20px;
+}
+
+.nav {
+    padding: 15px;
+    border-radius: 10px 10px;
+    text-align: left;
+}
+
+.fas,
+.far {
+    padding-right: 10px;
+}
+
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.sa {
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+}
+
+.fa-angle-right {
+    padding-left: 20px;
+}
+
+#navbardrop {
+    margin: 0;
+}
+
+.nav-link {
+    font-size: 32;
+}
+
+i {
+    pointer-events: none;
+}
+.returnbook{
+    letter-spacing: 1.5px;
+    text-align: center;
+    width: 100%;
+    padding: 2rem 0rem;
+    font-size: 1.6rem;
+}
