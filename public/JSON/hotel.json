@@ -1,0 +1,259 @@
+{
+    "hotel": [{
+        "bangalore": [{
+            "hotel1":[{
+                "hoteldetails":{
+                    "name":"Taj Yeshwantpur",
+                    "address":"Tumkur Rd, Yeshwanthpur Industrial Area"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/banglore_hotel/1hotel1.jpeg",
+                    "image2":"/hotel_img/banglore_hotel/1hotel2.jpeg",
+                    "image3":"/hotel_img/banglore_hotel/1hotel3.jpg",
+                    "image4":"/hotel_img/banglore_hotel/1hotel4.jpg"
+                }
+            }],
+            "hotel2":[{
+                "hoteldetails":{
+                    "name":"Ramanda Encore",
+                    "address":"Intermediate Ring Rd, Amarjyothi Domlur"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/banglore_hotel/1hotel5.jpg",
+                    "image2":"/hotel_img/banglore_hotel/1hotel6.jpg",
+                    "image3":"/hotel_img/banglore_hotel/1hotel7.jpg",
+                    "image4":"/hotel_img/banglore_hotel/1hotel8.jpeg"
+                }
+            }],
+            "hotel3":[{
+                "hoteldetails":{
+                    "name":"Chancery Pavillion",
+                    "address":"Residency Rd, Shanthala Nagar"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/banglore_hotel/1hotel10.jpg",
+                    "image2":"/hotel_img/banglore_hotel/1hotel9.jpg",
+                    "image3":"/hotel_img/banglore_hotel/1hotel11.jpg",
+                    "image4":"/hotel_img/banglore_hotel/1hotel12.jpg"
+                }
+            }],
+            "hotel4":[{
+                "hoteldetails":{
+                    "name":"Raddison Blue Atria",
+                    "address":" Palace Rd, Ambedkar Veedhi"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/banglore_hotel/1hotel13.jpg",
+                    "image2":"/hotel_img/banglore_hotel/1hotel14.jpg",
+                    "image3":"/hotel_img/banglore_hotel/1hotel15.jpg",
+                    "image4":"/hotel_img/banglore_hotel/1hotel16.jpg"
+                }
+            }]
+
+        }],
+        "delhi": [{
+            "hotel1":[{
+                "hoteldetails":{
+                    "name":"Leela Palace",
+                    "address":"Diplomatic Enclave, Chanakyapuri"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/delhi_hotel/2hotel1.jpg",
+                    "image2":"/hotel_img/delhi_hotel/2hotel2.jpg",
+                    "image3":"/hotel_img/delhi_hotel/2hotel3.jpg",
+                    "image4":"/hotel_img/delhi_hotel/2hotel4.jpg"
+                }
+            }],
+            "hotel2":[{
+                "hoteldetails":{
+                    "name":"The Lodhi",
+                    "address":"CGO Complex, Pragati Vihar"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/delhi_hotel/2hotel5.jpg",
+                    "image2":"/hotel_img/delhi_hotel/2hotel6.jpg",
+                    "image3":"/hotel_img/delhi_hotel/2hotel7.jpg",
+                    "image4":"/hotel_img/delhi_hotel/2hotel8.jpg"
+                }
+            }],
+            "hotel3":[{
+                "hoteldetails":{
+                    "name":"The Imperial",
+                    "address":"Janpath Ln, Janpath, Connaught Place"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/delhi_hotel/2hotel9.jpg",
+                    "image2":"/hotel_img/delhi_hotel/2hotel10.jpg",
+                    "image3":"/hotel_img/delhi_hotel/2hotel11.jpg",
+                    "image4":"/hotel_img/delhi_hotel/2hotel12.jpg"
+                }
+            }],
+            "hotel4":[{
+                "hoteldetails":{
+                    "name":"Maiden Hotel",
+                    "address":"Sham Nath Marg, Prema Kunj"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/delhi_hotel/2hotel13.jpg",
+                    "image2":"/hotel_img/delhi_hotel/2hotel14.jpg",
+                    "image3":"/hotel_img/delhi_hotel/2hotel15.jpg",
+                    "image4":"/hotel_img/delhi_hotel/2hotel16.jpg"
+                }
+            }]
+
+        }],
+        "mumbai":  [{
+            "hotel1":[{
+                "hoteldetails":{
+                    "name":"Trident Nariman Point",
+                    "address":"Chandra Bose Rd, Nariman Point"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/mumbai_hotel/3hotel1.jpg",
+                    "image2":"/hotel_img/mumbai_hotel/3hotel2.jpg",
+                    "image3":"/hotel_img/mumbai_hotel/3hotel3.jpg",
+                    "image4":"/hotel_img/mumbai_hotel/3hotel4.jpg"
+                }
+            }],
+            "hotel2":[{
+                "hoteldetails":{
+                    "name":"The Oberoi",
+                    "address":"Nariman Point"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/mumbai_hotel/3hotel5.jpg",
+                    "image2":"/hotel_img/mumbai_hotel/3hotel6.jpg",
+                    "image3":"/hotel_img/mumbai_hotel/3hotel7.jpg",
+                    "image4":"/hotel_img/mumbai_hotel/3hotel8.jpg"
+                }
+            }],
+            "hotel3":[{
+                "hoteldetails":{
+                    "name":"The Taj Mahal Palace",
+                    "address":"Apollo Bandar, Colaba"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/mumbai_hotel/3hotel9.jpg",
+                    "image2":"/hotel_img/mumbai_hotel/3hotel10.jpg",
+                    "image3":"/hotel_img/mumbai_hotel/3hotel11.jpg",
+                    "image4":"/hotel_img/mumbai_hotel/3hotel12.jpg"
+                }
+            }],
+            "hotel4":[{
+                "hoteldetails":{
+                    "name":"St. Regis",
+                    "address":"Senapati Bapat Marg, Lower Parel"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/mumbai_hotel/3hotel13.jpg",
+                    "image2":"/hotel_img/mumbai_hotel/3hotel14.jpg",
+                    "image3":"/hotel_img/mumbai_hotel/3hotel15.jpg",
+                    "image4":"/hotel_img/mumbai_hotel/3hotel16.jpg"
+                }
+            }]
+
+        }],
+        "hyderabad": [{
+            "hotel1":[{
+                "hoteldetails":{
+                    "name":"Trident Hyderabad",
+                    "address":"Hitech City Main Road Near Cyber Towers"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/hyderabad_hotel/4hotel1.jpg",
+                    "image2":"/hotel_img/hyderabad_hotel/4hotel2.jpg",
+                    "image3":"/hotel_img/hyderabad_hotel/4hotel3.jpg",
+                    "image4":"/hotel_img/hyderabad_hotel/4hotel4.jpg"
+                }
+            }],
+            "hotel2":[{
+                "hoteldetails":{
+                    "name":"The Oberoi",
+                    "address":"Nariman Point"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/hyderabad_hotel/4hotel5.jpg",
+                    "image2":"/hotel_img/hyderabad_hotel/4hotel6.jpg",
+                    "image3":"/hotel_img/hyderabad_hotel/4hotel7.jpg",
+                    "image4":"/hotel_img/hyderabad_hotel/4hotel8.jpg"
+                }
+            }],
+            "hotel3":[{
+                "hoteldetails":{
+                    "name":"Taj Falaknuma Palace",
+                    "address":"Engine Bowli, Falaknuma"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/hyderabad_hotel/4hotel9.jpeg",
+                    "image2":"/hotel_img/hyderabad_hotel/4hotel10.jpg",
+                    "image3":"/hotel_img/hyderabad_hotel/4hotel11.jpg",
+                    "image4":"/hotel_img/hyderabad_hotel/4hotel12.jpg"
+                }
+            }],
+            "hotel4":[{
+                "hoteldetails":{
+                    "name":"Sheraton hyderabad",
+                    "address":"Nanakramguda Rd, Financial District"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/hyderabad_hotel/4hotel13.jpg",
+                    "image2":"/hotel_img/hyderabad_hotel/4hotel14.jpg",
+                    "image3":"/hotel_img/hyderabad_hotel/4hotel15.jpg",
+                    "image4":"/hotel_img/hyderabad_hotel/4hotel16.jpg"
+                }
+            }]
+
+        }],
+        "chennai": [{
+            "hotel1":[{
+                "hoteldetails":{
+                    "name":"The Leela Palace",
+                    "address":"Adyar Sea Face, The Leela Palace Road"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/chennai_hotels/5hotel1.jpg",
+                    "image2":"/hotel_img/chennai_hotels/5hotel2.jpg",
+                    "image3":"/hotel_img/chennai_hotels/5hotel3.jpg",
+                    "image4":"/hotel_img/chennai_hotels/5hotel4.jpg"
+                }
+            }],
+            "hotel2":[{
+                "hoteldetails":{
+                    "name":"Trident Chennai",
+                    "address":"Grand Southern Trunk Rd, Kannan Colony"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/chennai_hotels/5hotel5.jpg",
+                    "image2":"/hotel_img/chennai_hotels/5hotel6.jpeg",
+                    "image3":"/hotel_img/chennai_hotels/5hotel7.jpg",
+                    "image4":"/hotel_img/chennai_hotels/5hotel8.jpg"
+                }
+            }],
+            "hotel3":[{
+                "hoteldetails":{
+                    "name":"Ramanda Plaza",
+                    "address":"Sardar Patel Rd, Little Mount"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/chennai_hotels/5hotel9.jpg",
+                    "image2":"/hotel_img/chennai_hotels/5hotel10.jpg",
+                    "image3":"/hotel_img/chennai_hotels/5hotel11.jpg",
+                    "image4":"/hotel_img/chennai_hotels/5hotel12.jpg"
+                }
+            }],
+            "hotel4":[{
+                "hoteldetails":{
+                    "name":"Feathers A Radha Hotel",
+                    "address":"Mount Poonamallee Rd, Manapakkam"
+                },
+                "hotelimages":{
+                    "image1":"/hotel_img/chennai_hotels/5hotel13.jpg",
+                    "image2":"/hotel_img/chennai_hotels/5hotel14.jpg",
+                    "image3":"/hotel_img/chennai_hotels/5hotel15.jpg",
+                    "image4":"/hotel_img/chennai_hotels/5hotel16.jpg"
+                }
+            }]
+
+        }]
+    }]
+}

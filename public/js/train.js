@@ -330,8 +330,13 @@ console.log(returndate);
 
                         }
                         else{
-                                window.location = `${url}/home`;
-
+                            //endpoint
+                            if(returndate == 'returnbook'){
+                                window.location = `${url}/hotel`;
+                            }
+                            else{
+                                window.location = `${url}/mybookings`;
+                            }
                         }
                     })
             }

@@ -154,7 +154,14 @@ fetch("http://localhost:3000/busdetails")
 
                         }
                         else {
-                            window.location = `${url}/home`;
+                            //endpoint
+                               //endpoint
+                               if(totalpeoples.returndate == 'returnbook'){
+                                window.location = `${url}/hotel`;
+                            }
+                            else{
+                                window.location = `${url}/mybookings`;
+                            }
                         }
                         })
 

@@ -153,7 +153,15 @@ console.log(varr);
 
                         }
                         else{
-                                window.location = `${url}/home`;
+                            //endpoint
+                            //from here go to hotel or go to my bookings
+                            if(details[1] == 'returnbook'){
+                                window.location = `${url}/hotel`;
+                            }
+                            else{
+                                window.location = `${url}/mybookings`;
+                            }
+                                
 
                         }
                        

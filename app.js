@@ -6,6 +6,7 @@ const session = require("express-session")
 const flash = require("connect-flash")
 const connection = require("./connection/connection") //connection
 let forcedrouting = false;
+const { Op } = require("sequelize");
 
 
 //listen to port
@@ -28,6 +29,7 @@ const Usertravel = require("./models/usertravel")
 const flightbooking = require("./models/flightbooking");
 const trainbooking = require("./models/trainbooking");
 const busbooking = require("./models/busbooking")
+const hotelbooking = require("./models/hotelbooking");
 
 User.hasMany(flightbooking, { foreignKey: 'userid' }); // creating foreign key
 flightbooking.belongsTo(User, { foreignKey: 'userid' });
@@ -38,6 +40,8 @@ trainbooking.belongsTo(User, { foreignKey: 'userid' });
 User.hasMany(busbooking, { foreignKey: 'userid' }); // creating foreign key
 busbooking.belongsTo(User, { foreignKey: 'userid' });
 
+User.hasMany(hotelbooking, { foreignKey: 'userid' }); // creating foreign key
+hotelbooking.belongsTo(User, { foreignKey: 'userid' });
 
 User.hasMany(Usertravel, { foreignKey: 'userid' }); // setting foreign key for usertrvel 
 Usertravel.belongsTo(User, { foreignKey: 'userid' })
@@ -125,7 +129,19 @@ app.get("/mybookings", (req, res) => {
 //Page to show user profile
 app.get("/myprofile", (req, res) => {
     if (req.session.loggedin === true) {
-        return res.render("myprofile")
+        console.log("Zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+        console.log(req.session.userid);
+        let userid = req.session.userid
+        User.findOne({ where:{
+            userid : req.session.userid
+        }})
+        .then((user)=>{
+            console.log('------------------------------------------------------');
+            console.log(user);
+            console.log(user.emailId);
+            return res.render("myprofile",{email:user.emailId})
+        })
+     
     } else {
         forcedrouting = true;
         res.redirect("/signin");
@@ -312,6 +328,44 @@ app.get("/traindetails", (req, res) => {
         })
     
     })
+    //hotel route
+app.get("/hoteldetails",(req,res)=>{
+    Usertravel.findOne({
+        where: {
+            userid: req.session.userid,
+            returndate: {
+                [Op.not]: 'returnbook'
+              }
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    })
+    .then((user) => {
+        console.log(user);
+        let data = user.dataValues;
+        res.send(data);
+    })
+})
+app.get("/hotel",(req,res)=>{
+    res.render("hotel");
+})
+app.post("/hotelbooking",(req,res)=>{
+console.log(req.body);
+hotelbooking.create({
+    userid: `${req.session.userid}`,
+    hotelname: `${req.body.hotelname}`,
+    hotelclass: `${req.body.hotelclass}`,
+    hoteladdress: `${req.body.hoteladdress}`,
+    destination: `${req.body.destinationvalue}`,
+    hotelprice : `${req.body.hotelprice}`
+})
+.then(()=>{
+    res.send("data")
+})
+})
+
+
     //all post routes
    //
    //
