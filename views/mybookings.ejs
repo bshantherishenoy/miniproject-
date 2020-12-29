@@ -1,0 +1,165 @@
+<%- include ('partials/header.ejs') %>
+<div class="book1">
+  <h3 class="colors"style="text-align:center">My Bookings</h3>
+  <hr>
+  <div class="container-fluid">
+    <div class="row nogutters">
+      <div class="col-4">
+        <div class="transport-booking">
+        <h4 >Mode of transport: <span><strong> Bus</strong></span></h4>
+        <span>Details:</span>
+        <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td scope="row">Name</td>
+            <td><strong>VRL</strong></td>
+            <td>Class</td>
+            <td><strong>SL</strong></td>
+          </tr>
+          <tr>
+            <td scope="row">From Time</td>
+            <td><strong>19:05</strong></td>
+            <td>To Time</td>
+            <td><strong>22:14</strong></td>
+          </tr>
+          <tr>
+          <td scope="row">From</td>
+          <td><strong>Bengaluru</strong></td>
+          <td>To</td>
+          <td><strong>Delhi</strong></td>
+          </tr>
+          <tr>
+          <td scope="row">Adults</td>
+          <td><strong>3</strong></td>
+          <td>Children</td>
+          <td><strong>2</strong></td>
+          </tr>
+          <tr>
+          <td scope="row">Date</td>
+          <td><strong>11/02/2021</strong></td>
+          <td>Price</td>
+          <td class="Price" style="padding-left: 0px;
+          padding-bottom: 0px;"><strong>1000<i class="fas fa-rupee-sign"></i></strong></td>
+          </tr>
+          </tbody>
+        </table>
+
+        </div>
+      </div>
+      <!-- ends -->
+      <div class="col-4">
+        <div class="hotel-booking">
+          <h4> <span>Name:</span><strong> Taj Palace Mumbai</strong></h4>
+          <span>Details:</span>
+          <p><strong>Location: </strong>Apollo Bandar, Colaba, Mumbai, Maharashtra.</p>
+          <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td scope="row">From</td>
+              <td><strong>11/06/2020</strong></td>
+              <td>To</td>
+              <td><strong>16/06/2020</strong></td>
+            </tr>
+            <tr>
+              <td scope="row">Room-type</td>
+              <td><strong>Delux</strong></td>
+              <td>Rooms</td>
+              <td><strong>3</strong></td>
+            </tr>
+            <tr>
+            <td scope="row">Adults</td>
+            <td><strong>3</strong></td>
+            <td>Children</td>
+            <td><strong>2</strong></td>
+            </tr>
+            <tr>
+            <td scope="row">Date</td>
+            <td><strong>11/02/2021</strong></td>
+            <td>Price</td>
+            <td class="Price" style="padding-left: 0px;
+            padding-bottom: 0px;"><strong>1000<i class="fas fa-rupee-sign"></i></strong></td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="payment">
+         <h3 class="p1"> Payment Status</h3>
+         <table class="table table-borderless">
+           <tbody>
+             <tr>
+               <td style="padding-bottom:0px"scope="row">Amount to be paid</td>
+               <td style="padding-bottom:0px" class="pay"><strong>HOTEL</strong></td>
+               <td style="padding-bottom:0px"  class="pay"><strong>3000</strong></td>
+             </tr>
+             <tr>
+               <td scope="row"></td>
+               <td style="padding-bottom:0px"><strong>TRANSPORT</strong></td>
+               <td style="padding-bottom:0px"><strong>3000</strong></td>
+             </tr>
+           </tbody>
+         </table>
+          <table class="table">
+            <tr>
+              <td  scope="row"></td>
+              <td ><strong>TOTAL</strong></td>
+              <td class="Price " style="text-align:right"><strong>6000<i class="fas fa-rupee-sign"></i></strong></td>
+            </tr>
+          </table>
+          <table class="table">
+            <tr>
+              <td scope="row">Payment Method</td>
+              <td><strong>CARD</strong></td>
+              <td>Type</td>
+              <td><strong>VISA</strong></td>
+            </tr>
+            <tr>
+              <td scope="row">Card NO</td>
+              <td ><strong>4193 4279 4176 XXXX</strong></td>
+              <td >Exp</td>
+              <td ><strong>11/28</strong></td>
+            </tr>
+
+          </table>
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <hr>
+  <div class="text-center">
+    <input class="btn btn-success" type="submit" value="Payment Successful">
+    <!-- Button trigger modal -->
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Cancel Booking
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><strong>Are you sure??..you want to cancel?</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Only 75% of the amount will be refunded.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <hr>
+
+</div>
+<%- include ('partials/footer.ejs') %>

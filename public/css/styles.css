@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+h1,h3 {
+    font-family: 'Ubuntu', sans-serif;
+    color: #222831;
+}
+
+.first {
+    margin: 20px;
+}
+.far {
+    padding-right: 10px;
+}
+
+
+
+.footer-padding {
+	padding-bottom: 60px;
+}
+
+.footer {
+	position: absolute;
+	text-align: center;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	background-color: #1abc9c;
+}
+
+.footer p {
+	margin-top: 25px;
+	font-size: 12px;
+  color: #fff;
+  font-size: 20px;
+}
+.profile-style{
+
+  width:350px;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+  background: #fff;
+  padding:20px;
+  margin :4% auto 0;
+  text-align: center;
+  border-radius: 20px;
+
+}
+.s{
+  margin-top: 10px;
+}
+.transport-booking{
+  border-right: 3px solid black;
+}
+.hotel-booking{
+}
+.Price{
+  font-size: 22px;
+}
+.price{
+  font-size: 22px;
+  text-align:right;
+  }
+.fa-rupee-sign{
+  padding-left: 10px;
+}
+.payment{
+  border-left: 3px solid black;
+
+}
+.p1{
+  text-align: center;
+}
+.btn{
+  text-align: center;
+}
+.colors{
+color: #1abc9c;
+font-family: 'Ubuntu', sans-serif;
+
+}
+.pay{
+
+}
+ul {
+    list-style-type: none;
+}
+.s{
+border: 4px solid black;
+border-radius: 20px;
+}
+.p{
+
+}
+hr.new2 {
+  border-top: 1px dashed red;
+}
+.pay{
+
+border: 4px solid black;
+border-radius: 20px;
+}
+.hotels{
+  
+}

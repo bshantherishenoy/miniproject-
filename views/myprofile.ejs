@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easygo</title>
-</head>
-<body>
-<%= email  %> 
-    <a href="/logout"><button>Logout</button></a>
-    <h1>Page to be created!</h1>
-</body>
-</html>
+<%- include ('partials/header.ejs') %>
+<div class="text-center">
+  <main class="form-signin">
+    <form class="profile-style">
+      <i class="far fa-user-circle fa-4x"></i>
+      <h1>My Profile</h1>
+      <label for="inputEmail" class="visually-hidden">Email address</label>
+      <h4><%= useremail%></h4>
+      <a class="btn btn-primary s" href="/logout" role="button">Logout</a>
+    </form>
+  </main>
+
+
+</div>
+
+<%- include ('partials/footer.ejs') %>

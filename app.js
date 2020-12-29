@@ -43,7 +43,7 @@ busbooking.belongsTo(User, { foreignKey: 'userid' });
 User.hasMany(hotelbooking, { foreignKey: 'userid' }); // creating foreign key
 hotelbooking.belongsTo(User, { foreignKey: 'userid' });
 
-User.hasMany(Usertravel, { foreignKey: 'userid' }); // setting foreign key for usertrvel 
+User.hasMany(Usertravel, { foreignKey: 'userid' }); // setting foreign key for usertrvel
 Usertravel.belongsTo(User, { foreignKey: 'userid' })
 
 
@@ -76,6 +76,7 @@ app.get("/", (req, res) => {
         res.render("index", { navbar: '', errormessages: '' })
     }
 })
+
 
 //signup page
 app.get("/signup", (req, res) => {
@@ -119,7 +120,7 @@ app.get("/home", (req, res) => {
 //Page to show all user bookings
 app.get("/mybookings", (req, res) => {
     if (req.session.loggedin === true) {
-        return res.send("mybookings : page to be created!")
+        return res.render("mybookings");
     } else {
         forcedrouting = true;
         res.redirect("/signin");
@@ -129,23 +130,21 @@ app.get("/mybookings", (req, res) => {
 //Page to show user profile
 app.get("/myprofile", (req, res) => {
     if (req.session.loggedin === true) {
-        console.log("Zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-        console.log(req.session.userid);
-        let userid = req.session.userid
-        User.findOne({ where:{
-            userid : req.session.userid
-        }})
-        .then((user)=>{
-            console.log('------------------------------------------------------');
-            console.log(user);
-            console.log(user.emailId);
-            return res.render("myprofile",{email:user.emailId})
-        })
-     
+      User.findOne({
+              where: {
+                  userid: req.session.userid
+              }
+          })
+          .then((user) => {
+              const mails = user.emailId;
+              res.render("myprofile",{ useremail : mails});
+          })
+
     } else {
         forcedrouting = true;
         res.redirect("/signin");
     }
+
 })
 
 //Page to logout
@@ -170,7 +169,7 @@ forcedrouting  = true;
     return  res.render("train")
 
     })
-    //page gets all bus details 
+    //page gets all bus details
 app.get("/bus", (req, res) => {
     if (req.session.loggedin != true) {
 
@@ -269,7 +268,7 @@ app.get("/traindetails", (req, res) => {
             })
             res.send(data);
         })
-    
+
     })
 
     //return train booking API
@@ -298,7 +297,7 @@ app.get("/traindetails", (req, res) => {
             })
             res.send(data);
         })
-    
+
     })
      //return bus booking API
      app.get("/busreturnbooking",(req,res)=>{
@@ -326,7 +325,16 @@ app.get("/traindetails", (req, res) => {
             })
             res.send(data);
         })
-    
+
+    })
+
+    app.get("/summary", (req, res) => {
+        // if (req.session.loggedin === true) {
+            return res.render("summary");
+        // } else {
+        //     forcedrouting = true;
+        //     res.redirect("/signin");
+        // }
     })
     //hotel route
 app.get("/hoteldetails",(req,res)=>{
@@ -571,9 +579,12 @@ app.post("/signup", (req, res) => {
 })
 
 
+
+
+
 //404 error handling
 app.get("*", (req, res) => {
-    res.status(404);
-    res.send("404 Page not found")
+
+    res.status(400).render("404 -EG");
         //page to be designed at last
 })
