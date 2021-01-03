@@ -29,15 +29,17 @@ fetch("http://localhost:3000/busdetails")
         let to = res.to;
         let children = res.children;
         let adult = res.adult;
+        let bookingid = res.bookingid;
         let returndate = res.returndate;
         dateinput.textContent = departuredate;
         frominput.textContent = from;
         toinput.textContent = to;
         let totalpeople = children + adult;
-        return { totalpeople, returndate };
+        return { totalpeople, returndate,bookingid };
 
     })
     .then((totalpeoples) => {
+        let bookingid = totalpeoples.bookingid;
         if(totalpeoples.returndate == 'returnbook'){
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; 
@@ -137,7 +139,8 @@ fetch("http://localhost:3000/busdetails")
                         "fromtime": departuretime,
                         "totime": returntime,
                         "brand": brand,
-                        "class1": class1
+                        "class1": class1,
+                        "bookingid" : bookingid 
                     })
                 })
                     .then((data) => {
@@ -160,7 +163,7 @@ fetch("http://localhost:3000/busdetails")
                                 window.location = `${url}/hotel`;
                             }
                             else{
-                                window.location = `${url}/mybookings`;
+                                window.location = `${url}/summary`;
                             }
                         }
                         })

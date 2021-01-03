@@ -7,6 +7,7 @@ const todate = document.querySelector(".todate");
 let selectedclass;
 const mainContainer = document.querySelector(".main-container");
 let destinationvalue;
+let  bookingid;
 
 fetch(`${url}/hoteldetails`)
   .then((hotel) => {
@@ -15,6 +16,7 @@ fetch(`${url}/hoteldetails`)
   .then((hotel1) => {
     console.log(hotel1);
     destinationvalue = hotel1.to;
+     bookingid = hotel1.bookingid;
 
     //get duration between two dates
     let durationvalue = datediff(parseDate(hotel1.departuredate), parseDate(hotel1.returndate));
@@ -263,7 +265,8 @@ let data = {
   hotelprice,
   hotelname,
   hoteladdress,
-  destinationvalue
+  destinationvalue,
+  bookingid
 }
 console.log(data);
 //send data to server
@@ -278,7 +281,7 @@ fetch(`${url}/hotelbooking`, {
   body: JSON.stringify(data)
 })
 .then(()=>{
-  window.location = `${url}/mybookings`;
+  window.location = `${url}/summary`;
 })
 
 

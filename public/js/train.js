@@ -59,6 +59,7 @@ fetch("http://localhost:3000/traindetails")
         let children = res.children;
         let adult = res.adult;
         let returndate = res.returndate;
+        let bookingid = res.bookingid;
         dateinput.textContent = departuredate;
         frominput.textContent = from;
         toinput.textContent = to;
@@ -67,7 +68,8 @@ fetch("http://localhost:3000/traindetails")
             totalpeople,
             from,
             to,
-            returndate
+            returndate,
+            bookingid
         }
     })
     .then((details) => {
@@ -75,6 +77,7 @@ fetch("http://localhost:3000/traindetails")
         let returndate = details.returndate;
         let todetails = details.to;
         let fromdetails = details.from;
+        let bookingid = details.bookingid;
         console.log(todetails);
         console.log(fromdetails);
 //add the text
@@ -177,10 +180,11 @@ fetch("http://localhost:3000/traindetails")
             }
 
         }
-        return {selectedarray,returndate};
+        return {selectedarray,returndate,bookingid};
     })
     .then((selected) => {
-
+        let returndate = selected.returndate;
+let bookingid = selected.bookingid;
 let selectedarray = selected.selectedarray;
         console.log(selectedarray);
         console.log(selectedarray.length);
@@ -267,11 +271,12 @@ let selectedarray = selected.selectedarray;
             console.log(tickets);
             tickets.appendChild(div)
         }
-return selected.returndate;
+return {returndate,bookingid};
     })
-    .then((returndate) => {
+    .then((returndate1) => {
 
-console.log(returndate);
+let returndate = returndate1.returndate;
+let bookingid = returndate1.bookingid;
         let selectedclass, price, brand, departuretime, returntime;
 
         tickets.addEventListener("click", (e) => {
@@ -313,7 +318,8 @@ console.log(returndate);
                             "fromtime": departuretime,
                             "totime": returntime,
                             "brand": brand,
-                            "class1": selectedclass
+                            "class1": selectedclass,
+                            "bookingid": bookingid
                         })
                     })
                     .then((data) => {
@@ -335,7 +341,7 @@ console.log(returndate);
                                 window.location = `${url}/hotel`;
                             }
                             else{
-                                window.location = `${url}/mybookings`;
+                                window.location = `${url}/summary`;
                             }
                         }
                     })

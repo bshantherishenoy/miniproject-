@@ -44,6 +44,7 @@ fetch(`${url}/flightdetails`)
         let children = res.children;
         let adult = res.adult;
         let returndate = res.returndate;
+        let bookingid = res.bookingid;//
         dateinput.textContent = departuredate;
         frominput.textContent = from;
         toinput.textContent = to;
@@ -57,7 +58,7 @@ fetch(`${url}/flightdetails`)
             returnbook.textContent = 'RETURN BOOKING'
         }
 
-        let details = [totalpeople,returndate];
+        let details = [totalpeople,returndate,bookingid];
         return details;
     })
     .then((details) => {
@@ -135,7 +136,8 @@ console.log(details[1]);
                             "fromtime": fromtimevalue,
                             "totime": totimevalue,
                             "brand": brandvalue,
-                            "flightid": flightidvalue
+                            "flightid": flightidvalue,
+                            "bookingid":details[2]
                         })
                     })
                     .then((data) => {
@@ -159,7 +161,7 @@ console.log(varr);
                                 window.location = `${url}/hotel`;
                             }
                             else{
-                                window.location = `${url}/mybookings`;
+                                window.location = `${url}/summary`;
                             }
                                 
 
@@ -175,3 +177,4 @@ console.log(varr);
         })
 
     })
+   

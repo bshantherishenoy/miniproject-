@@ -6,6 +6,10 @@ const trainbooking = connection.define('trainbooking', {
     userid: {
         type: DataTypes.INTEGER
     },
+    bookingid:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     trainname: {
         type: DataTypes.STRING,
         allowNull: false

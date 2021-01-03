@@ -6,6 +6,10 @@ const hotelbooking = connection.define('hotelbooking', {
     userid: {
         type: DataTypes.INTEGER
     },
+    bookingid:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     hotelname: {
         type: DataTypes.STRING,
         allowNull: false
@@ -24,6 +28,10 @@ const hotelbooking = connection.define('hotelbooking', {
     },
     hotelprice: {
         type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    paymentstatus: {
+        type: DataTypes.BOOLEAN,
         allowNull: false
     }
 });

@@ -6,6 +6,10 @@ const flightbooking = connection.define('flightbooking', {
     userid: {
         type: DataTypes.INTEGER
     },
+    bookingid:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     flightid: {
         type: DataTypes.STRING,
         allowNull: false

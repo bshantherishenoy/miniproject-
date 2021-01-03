@@ -16,7 +16,10 @@ const User = connection.define('userdata', {
         type: DataTypes.STRING,
         allowNull: false
     }
+},{
+    hasTrigger: true
 });
+
 
 console.log(User);
 module.exports = User;

@@ -7,6 +7,10 @@ const flash = require("connect-flash")
 const connection = require("./connection/connection") //connection
 let forcedrouting = false;
 const { Op } = require("sequelize");
+const short = require('short-uuid');
+const nodemailer = require("nodemailer");
+// const { QueryTypes } = require('sequelize');
+// let used = 0;
 
 
 //listen to port
@@ -23,7 +27,7 @@ connection.authenticate()
     .catch(() => {
         console.log("error occured");
     })
-    //require all models here
+//require all models here
 const User = require("./models/user")
 const Usertravel = require("./models/usertravel")
 const flightbooking = require("./models/flightbooking");
@@ -62,6 +66,17 @@ app.use(session({
 app.use(flash());
 app.use(express.json());
 //basic route
+
+
+//nodemailer setup
+let transporter = nodemailer.createTransport({
+    service:'gmail',
+    auth:{
+        user:'easygowebservice@gmail.com',
+        pass:'easygo1234'
+    }
+})
+
 
 //all get routes
 
@@ -130,15 +145,15 @@ app.get("/mybookings", (req, res) => {
 //Page to show user profile
 app.get("/myprofile", (req, res) => {
     if (req.session.loggedin === true) {
-      User.findOne({
-              where: {
-                  userid: req.session.userid
-              }
-          })
-          .then((user) => {
-              const mails = user.emailId;
-              res.render("myprofile",{ useremail : mails});
-          })
+        User.findOne({
+            where: {
+                userid: req.session.userid
+            }
+        })
+            .then((user) => {
+                const mails = user.emailId;
+                res.render("myprofile", { useremail: mails });
+            })
 
     } else {
         forcedrouting = true;
@@ -162,62 +177,62 @@ app.get("/logout", (req, res) => {
 app.get("/train", (req, res) => {
     if (req.session.loggedin != true) {
 
-forcedrouting  = true;
+        forcedrouting = true;
         return res.redirect("/signin")
     }
 
-    return  res.render("train")
+    return res.render("train")
 
-    })
-    //page gets all bus details
+})
+//page gets all bus details
 app.get("/bus", (req, res) => {
     if (req.session.loggedin != true) {
 
-        forcedrouting  = true;
-                return res.redirect("/signin")
-            }
-       return res.render("bus")
+        forcedrouting = true;
+        return res.redirect("/signin")
+    }
+    return res.render("bus")
 
-    })
-    //Page gets all flight details
+})
+//Page gets all flight details
 app.get("/flight", (req, res) => {
     if (req.session.loggedin != true) {
 
-        forcedrouting  = true;
-                return res.redirect("/signin")
-            }
+        forcedrouting = true;
+        return res.redirect("/signin")
+    }
     return res.render("flight");
 
 })
 
 // API sends data about flight details
 app.get("/flightdetails", (req, res) => {
-        console.log("---------TRIGGERED-----------");
-        Usertravel.findOne({
-                where: {
-                    userid: req.session.userid,
-                },
-                order: [
-                    ['createdAt', 'DESC']
-                ]
-            })
-            .then((user) => {
-                console.log(user);
-                let data = user.dataValues;
-                res.send(data);
-            })
+    console.log("---------TRIGGERED-----------");
+    Usertravel.findOne({
+        where: {
+            userid: req.session.userid,
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
     })
-    // API sends data about Bus details
+        .then((user) => {
+            console.log(user);
+            let data = user.dataValues;
+            res.send(data);
+        })
+})
+// API sends data about Bus details
 app.get("/busdetails", (req, res) => {
     console.log("---------TRIGGERED-----------");
     Usertravel.findOne({
-            where: {
-                userid: req.session.userid,
-            },
-            order: [
-                ['createdAt', 'DESC']
-            ]
-        })
+        where: {
+            userid: req.session.userid,
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    })
         .then((user) => {
             console.log(user);
             let data = user.dataValues;
@@ -227,172 +242,665 @@ app.get("/busdetails", (req, res) => {
 
 // API sends data about Train details
 app.get("/traindetails", (req, res) => {
-        console.log("---------TRIGGERED-----------");
-        Usertravel.findOne({
-                where: {
-                    userid: req.session.userid,
-                },
-                order: [
-                    ['createdAt', 'DESC']
-                ]
-            })
-            .then((user) => {
-                console.log(user);
-                let data = user.dataValues;
-                res.send(data);
-            })
-    })
-//return flight booking API
-    app.get("/flightreturnbooking",(req,res)=>{
-        console.log("heloooooooooooooooooooo");
-        Usertravel.findOne({
-            where: {
-                userid: req.session.userid,
-            },
-            order: [
-                ['createdAt', 'DESC']
-            ]
-        })
-        .then((user) => {
-            console.log(user);
-            let data = user.dataValues;
-            Usertravel.create({
-                userid: `${req.session.userid}`,
-                from: `${data.to}`,
-                to: `${data.from}`,
-                mode: `${data.mode}`,
-                adult: `${data.adult}`,
-                children: `${data.children}`,
-                departuredate: `${data.departuredate}`,
-                returndate: `returnbook`
-            })
-            res.send(data);
-        })
-
-    })
-
-    //return train booking API
-    app.get("/trainreturnbooking",(req,res)=>{
-        console.log("heloooooooooooooooooooo");
-        Usertravel.findOne({
-            where: {
-                userid: req.session.userid,
-            },
-            order: [
-                ['createdAt', 'DESC']
-            ]
-        })
-        .then((user) => {
-            console.log(user);
-            let data = user.dataValues;
-            Usertravel.create({
-                userid: `${req.session.userid}`,
-                from: `${data.to}`,
-                to: `${data.from}`,
-                mode: `${data.mode}`,
-                adult: `${data.adult}`,
-                children: `${data.children}`,
-                departuredate: `${data.departuredate}`,
-                returndate: `returnbook`
-            })
-            res.send(data);
-        })
-
-    })
-     //return bus booking API
-     app.get("/busreturnbooking",(req,res)=>{
-        console.log("heloooooooooooooooooooo");
-        Usertravel.findOne({
-            where: {
-                userid: req.session.userid,
-            },
-            order: [
-                ['createdAt', 'DESC']
-            ]
-        })
-        .then((user) => {
-            console.log(user);
-            let data = user.dataValues;
-            Usertravel.create({
-                userid: `${req.session.userid}`,
-                from: `${data.to}`,
-                to: `${data.from}`,
-                mode: `${data.mode}`,
-                adult: `${data.adult}`,
-                children: `${data.children}`,
-                departuredate: `${data.departuredate}`,
-                returndate: `returnbook`
-            })
-            res.send(data);
-        })
-
-    })
-
-    app.get("/summary", (req, res) => {
-        // if (req.session.loggedin === true) {
-            return res.render("summary");
-        // } else {
-        //     forcedrouting = true;
-        //     res.redirect("/signin");
-        // }
-    })
-    //hotel route
-app.get("/hoteldetails",(req,res)=>{
+    console.log("---------TRIGGERED-----------");
     Usertravel.findOne({
         where: {
             userid: req.session.userid,
-            returndate: {
-                [Op.not]: 'returnbook'
-              }
         },
         order: [
             ['createdAt', 'DESC']
         ]
     })
-    .then((user) => {
-        console.log(user);
-        let data = user.dataValues;
-        res.send(data);
-    })
+        .then((user) => {
+            console.log(user);
+            let data = user.dataValues;
+            res.send(data);
+        })
 })
-app.get("/hotel",(req,res)=>{
+//return flight booking API
+app.get("/flightreturnbooking", (req, res) => {
+    console.log("heloooooooooooooooooooo");
+    Usertravel.findOne({
+        where: {
+            userid: req.session.userid,
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    })
+        .then((user) => {
+            console.log(user);
+            let data = user.dataValues;
+            Usertravel.create({
+                userid: `${req.session.userid}`,
+                bookingid: `${data.bookingid}`,
+                from: `${data.to}`,
+                to: `${data.from}`,
+                mode: `${data.mode}`,
+                adult: `${data.adult}`,
+                children: `${data.children}`,
+                departuredate: `${data.departuredate}`,
+                returndate: `returnbook`
+            })
+            res.send(data);
+        })
+
+})
+
+//return train booking API
+app.get("/trainreturnbooking", (req, res) => {
+    console.log("heloooooooooooooooooooo");
+    Usertravel.findOne({
+        where: {
+            userid: req.session.userid,
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    })
+        .then((user) => {
+            console.log(user);
+            let data = user.dataValues;
+            Usertravel.create({
+                userid: `${req.session.userid}`,
+                bookingid: `${data.bookingid}`,
+                from: `${data.to}`,
+                to: `${data.from}`,
+                mode: `${data.mode}`,
+                adult: `${data.adult}`,
+                children: `${data.children}`,
+                departuredate: `${data.departuredate}`,
+                returndate: `returnbook`
+            })
+            res.send(data);
+        })
+
+})
+//return bus booking API
+app.get("/busreturnbooking", (req, res) => {
+    console.log("heloooooooooooooooooooo");
+    Usertravel.findOne({
+        where: {
+            userid: req.session.userid,
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    })
+        .then((user) => {
+            console.log(user);
+            let data = user.dataValues;
+            Usertravel.create({
+                userid: `${req.session.userid}`,
+                bookingid: `${data.bookingid}`,
+                from: `${data.to}`,
+                to: `${data.from}`,
+                mode: `${data.mode}`,
+                adult: `${data.adult}`,
+                children: `${data.children}`,
+                departuredate: `${data.departuredate}`,
+                returndate: `returnbook`
+            })
+            res.send(data);
+        })
+
+})
+
+app.get("/summary", (req, res) => {
+    // if (req.session.loggedin === true) {
+    return res.render("summary");
+    // } else {
+    //     forcedrouting = true;
+    //     res.redirect("/signin");
+    // }
+})
+//hotel route
+app.get("/hoteldetails", (req, res) => {
+    Usertravel.findOne({
+        where: {
+            userid: req.session.userid,
+            returndate: {
+                [Op.not]: 'returnbook'
+            }
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    })
+        .then((user) => {
+            console.log(user);
+            let data = user.dataValues;
+            res.send(data);
+        })
+})
+app.get("/hotel", (req, res) => {
     res.render("hotel");
 })
-app.post("/hotelbooking",(req,res)=>{
-console.log(req.body);
-hotelbooking.create({
-    userid: `${req.session.userid}`,
-    hotelname: `${req.body.hotelname}`,
-    hotelclass: `${req.body.hotelclass}`,
-    hoteladdress: `${req.body.hoteladdress}`,
-    destination: `${req.body.destinationvalue}`,
-    hotelprice : `${req.body.hotelprice}`
+
+app.get("/summarydetails", (req, res) => {
+    Usertravel.findOne({
+        where: {
+            userid: req.session.userid,
+            returndate: {
+                [Op.not]: 'returnbook'
+            }
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    })
+        .then((user) => {
+            console.log(user);
+            let data = user.dataValues;
+            res.send(data);
+        })
 })
-.then(()=>{
-    res.send("data")
+
+app.get("/mybookingstatus", (req, res) => {
+
+    Usertravel.findAll({
+        where: {
+            userid: req.session.userid
+        }
+    })
+        .then((alluserdata) => {
+            Usertravel.findAll({
+                where: {
+                    userid: req.session.userid,
+                    returndate: 'returnbook'
+                }
+            }).then((returnbookings) => {
+                flightbooking.findAll({
+                    where: {
+                        userid: req.session.userid,
+                        paymentstatus: 1
+                    }
+                })
+                    .then((flightbookings) => {
+                        trainbooking.findAll({
+                            where: {
+                                userid: req.session.userid,
+                                paymentstatus: 1
+                            }
+                        })
+                            .then((trainbookings) => {
+                                busbooking.findAll({
+                                    where: {
+                                        userid: req.session.userid,
+                                        paymentstatus: 1
+                                    }
+                                })
+                                    .then((busbookings) => {
+                                        hotelbooking.findAll({
+                                            where: {
+                                                userid: req.session.userid,
+                                                paymentstatus: 1
+                                            }
+                                        })
+                                            .then((hotelbookings) => {
+                                                console.log("---------------------");
+                                                console.log(flightbookings);
+                                                console.log("---------------------");
+                                                console.log(trainbookings);
+                                                console.log("---------------------");
+                                                console.log(busbookings);
+                                                console.log("---------------------");
+                                                console.log(hotelbookings);
+                                                console.log("---------------------");
+                                                res.send({
+                                                    returnbookings,
+                                                    flightbookings,
+                                                    trainbookings,
+                                                    busbookings,
+                                                    hotelbookings,
+                                                    alluserdata
+                                                })
+                                            })
+                                    })
+                            })
+
+                    })
+
+
+            })
+
+
+        })
+
 })
+app.post("/cancelbooking", (req, res) => {
+    console.log(req.body.id);
+    flightbooking.destroy({
+        where: {
+            bookingid: req.body.id
+        }
+    })
+        .then(() => {
+            console.log("deleted");
+            //delete train bookings
+            trainbooking.destroy({
+                where: {
+                    bookingid: req.body.id
+                }
+            })
+                .then(() => {
+                    console.log("deleted");
+                    //delete  bus bookings
+                    busbooking.destroy({
+                        where: {
+                            bookingid: req.body.id
+                        }
+                    })
+                        .then(() => {
+                            console.log("deleted");
+                            res.send("deleted")
+
+                        })
+                })
+        })
+    
+   
+
+})
+
+//all post routes
+//
+//
+//
+
+app.post("/paymentprocessing", (req, res) => {
+    console.log("abe here-----------------------------------");
+    console.log(req.body.mode);
+    console.log(req.body.uuid1);
+    console.log(req.body.uuid2);
+    console.log(req.body.hoteluuid);
+    console.log("abe here-----------------------------------");
+    console.log("ENTERING UPDATE PROCESS");
+    if (req.body.mode == "PLANE") {
+        flightbooking.findOne({
+            where: {
+                bookingid: req.body.uuid1
+            }
+        })
+            .then((data1) => {
+
+                data1.update({ paymentstatus: 1 })
+                    .then(() => {
+                        console.log("first one updated");
+
+
+                        if (req.body.uuid2 != undefined) {
+                            flightbooking.findOne({
+                                where: {
+                                    bookingid: req.body.uuid2
+                                }
+                            }).then((data3) => {
+                                data3.update({ paymentstatus: 1 })
+                                    .then(() => {
+                                        console.log("second one updated");
+                                        hotelbooking.findOne({
+                                            where: {
+                                                bookingid: req.body.hoteluuid
+                                            }
+                                        }).then((data4) => {
+                                            data4.update({ paymentstatus: 1 })
+                                                .then(() => {
+                                                    console.log("hotel updated");
+                                                })
+                                        })
+
+                                    })
+
+
+                            })
+                        }
+                        else{
+                            //sending mail only when flight one way is booked
+                            let mailOptions = {
+                                from: 'easygowebservice@gmail.com',
+                                to:'bg.18.beis@acharya.ac.in',
+                                subject:'YOUR BOOKING WAS SUCCESSFUL(TEST)',
+                                text:`TEST TEST TEST${JSON.stringify(data1)}`
+                            }
+                            transporter.sendMail(mailOptions,(err,data)=>{
+                                if(err){
+                                    console.log("error");
+                                }
+                                else{
+                                    console.log("sent");
+                                }
+
+                            })
+
+                        }
+                    })
+
+
+
+            })
+    }
+    else if (req.body.mode == "TRAIN") {
+        //train update
+
+        trainbooking.findOne({
+            where: {
+                bookingid: req.body.uuid1
+            }
+        })
+            .then((data1) => {
+
+                data1.update({ paymentstatus: 1 })
+                    .then(() => {
+                        console.log("first one updated");
+
+
+                        if (req.body.uuid2 != undefined) {
+                            trainbooking.findOne({
+                                where: {
+                                    bookingid: req.body.uuid2
+                                }
+                            }).then((data3) => {
+                                data3.update({ paymentstatus: 1 })
+                                    .then(() => {
+                                        console.log("second one updated");
+                                        hotelbooking.findOne({
+                                            where: {
+                                                bookingid: req.body.hoteluuid
+                                            }
+                                        }).then((data4) => {
+                                            data4.update({ paymentstatus: 1 })
+                                                .then(() => {
+                                                    console.log("hotel updated");
+                                                })
+                                        })
+
+                                    })
+
+
+                            })
+                        }
+                    })
+
+
+
+            })
+
+
+
+    }
+    else {
+        //bus update
+        busbooking.findOne({
+            where: {
+                bookingid: req.body.uuid1
+            }
+        })
+            .then((data1) => {
+
+                data1.update({ paymentstatus: 1 })
+                    .then(() => {
+                        console.log("first one updated");
+
+
+                        if (req.body.uuid2 != undefined) {
+                            busbooking.findOne({
+                                where: {
+                                    bookingid: req.body.uuid2
+                                }
+                            }).then((data3) => {
+                                data3.update({ paymentstatus: 1 })
+                                    .then(() => {
+                                        console.log("second one updated");
+                                        hotelbooking.findOne({
+                                            where: {
+                                                bookingid: req.body.hoteluuid
+                                            }
+                                        }).then((data4) => {
+                                            data4.update({ paymentstatus: 1 })
+                                                .then(() => {
+                                                    console.log("hotel updated");
+                                                })
+                                        })
+
+                                    })
+
+
+                            })
+                        }
+                    })
+
+
+
+            })
+
+    }
+    res.send("allworkdone");
+
 })
 
 
-    //all post routes
-   //
-   //
-   //
+app.post("/summarytransportdetails", (req, res) => {
+    console.log(req.body.mode);
+    console.log(req.body.returndate);
+
+    if (req.body.mode == 'PLANE') {
+        if (req.body.returndate == "undefined") {
+            flightbooking.findOne({
+                where: {
+                    userid: req.session.userid
+                },
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            })
+                .then((user) => {
+                    console.log(user);
+                    return res.send(user.dataValues)
+                })
+        }
+        else {
+            console.log("here");
+            flightbooking.findAll({
+                where: {
+                    userid: req.session.userid
+                },
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            }).then((user) => {
+                console.log("------------------here-------------------");
+                console.log(user);
+                console.log("----here is what you want in life child ----------------------------");
+                console.log(user[1]);
+                console.log(user[1].dataValues);
+                let data1 = user[1].dataValues;
+                let priceofreturnbook = user[0].dataValues.price;
+                let returnuuid = user[0].bookingid;
+                //   res.send({
+                //       data1,
+                //       priceofreturnbook
+                //   })
+                hotelbooking.findOne({
+                    where: {
+                        userid: req.session.userid
+                    },
+                    order: [
+                        ['createdAt', 'DESC']
+                    ]
+                })
+                    .then((user) => {
+                        console.log(user);
+                        let hoteldetails = user.dataValues
+                        return res.send({
+                            data1,
+                            priceofreturnbook,
+                            hoteldetails,
+                            returnuuid
+                        })
+                    })
+
+            })
+        }
+    }
+    else if (req.body.mode == 'TRAIN') {
+        if (req.body.returndate == "undefined") {
+            trainbooking.findOne({
+                where: {
+                    userid: req.session.userid
+                },
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            })
+                .then((user) => {
+                    console.log(user);
+                    return res.send(user.dataValues)
+                })
+        }
+        else {
+            console.log("here");
+            trainbooking.findAll({
+                where: {
+                    userid: req.session.userid
+                },
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            }).then((user) => {
+                console.log("------------------here-------------------");
+                console.log(user);
+                console.log("----here is what you want in life child ----------------------------");
+                console.log(user[1]);
+                console.log(user[1].dataValues);
+                let data1 = user[1].dataValues;
+                let priceofreturnbook = user[0].dataValues.price;
+                let returnuuid = user[0].bookingid;
+                //   res.send({
+                //       data1,
+                //       priceofreturnbook
+                //   })
+                hotelbooking.findOne({
+                    where: {
+                        userid: req.session.userid
+                    },
+                    order: [
+                        ['createdAt', 'DESC']
+                    ]
+                })
+                    .then((user) => {
+                        console.log(user);
+                        let hoteldetails = user.dataValues
+                        return res.send({
+                            data1,
+                            priceofreturnbook,
+                            hoteldetails,
+                            returnuuid
+                        })
+                    })
+
+            })
+        }
+    }
+    else {
+        if (req.body.returndate == "undefined") {
+            busbooking.findOne({
+                where: {
+                    userid: req.session.userid
+                },
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            })
+                .then((user) => {
+                    console.log(user);
+                    return res.send(user.dataValues)
+                })
+        }
+        else {
+            console.log("here");
+            busbooking.findAll({
+                where: {
+                    userid: req.session.userid
+                },
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            }).then((user) => {
+                console.log("------------------here-------------------");
+                console.log(user);
+                console.log("----here is what you want in life child ----------------------------");
+                console.log(user[1]);
+                console.log(user[1].dataValues);
+                let data1 = user[1].dataValues;
+                let priceofreturnbook = user[0].dataValues.price;
+                let returnuuid = user[0].bookingid;
+                //   res.send({
+                //       data1,
+                //       priceofreturnbook
+                //   })
+                hotelbooking.findOne({
+                    where: {
+                        userid: req.session.userid
+                    },
+                    order: [
+                        ['createdAt', 'DESC']
+                    ]
+                })
+                    .then((user) => {
+                        console.log(user);
+                        let hoteldetails = user.dataValues
+                        return res.send({
+                            data1,
+                            priceofreturnbook,
+                            hoteldetails,
+                            returnuuid
+                        })
+                    })
+
+            })
+        }
+    }
+
+})
+
+
+
+
+
+app.post("/hotelbooking", (req, res) => {
+    console.log(req.body);
+    hotelbooking.create({
+        userid: `${req.session.userid}`,
+        bookingid: `${req.body.bookingid}`,
+        paymentstatus: `${0}`,
+        hotelname: `${req.body.hotelname}`,
+        hotelclass: `${req.body.hotelclass}`,
+        hoteladdress: `${req.body.hoteladdress}`,
+        destination: `${req.body.destinationvalue}`,
+        hotelprice: `${req.body.hotelprice}`
+    })
+        .then(() => {
+            res.send("data")
+        })
+})
+
+
 app.post("/flightbooking", (req, res) => {
     console.log("---------BADABOOMBOOMBOOM-----------");
 
     console.log(req.body);
-    let { price, fromtime, totime, brand, flightid } = req.body;
+    let { price, fromtime, totime, brand, flightid, bookingid } = req.body;
 
     flightbooking.create({
-            userid: `${req.session.userid}`,
-            flightid: `${flightid}`,
-            flightname: `${brand}`,
-            fromtime: `${fromtime}`,
-            totime: `${totime}`,
-            price: `${price}`,
-            paymentstatus: `${0}`
-        })
+        userid: `${req.session.userid}`,
+        bookingid: `${bookingid}`,
+        flightid: `${flightid}`,
+        flightname: `${brand}`,
+        fromtime: `${fromtime}`,
+        totime: `${totime}`,
+        price: `${price}`,
+        paymentstatus: `${0}`
+    })
         .then(() => {
             console.log("DATA UPDATED");
             res.send("recieved")
@@ -403,17 +911,18 @@ app.post("/trainbooking", (req, res) => {
     console.log("---------BADABOOMBOOMBOOM-----------");
 
     console.log(req.body);
-    let { price, fromtime, totime, brand, class1 } = req.body;
+    let { price, fromtime, totime, brand, class1, bookingid } = req.body;
 
     trainbooking.create({
-            userid: `${req.session.userid}`,
-            trainname: `${brand}`,
-            class: `${class1}`,
-            fromtime: `${fromtime}`,
-            totime: `${totime}`,
-            price: `${price}`,
-            paymentstatus: `${0}`
-        })
+        userid: `${req.session.userid}`,
+        bookingid: `${bookingid}`,
+        trainname: `${brand}`,
+        class: `${class1}`,
+        fromtime: `${fromtime}`,
+        totime: `${totime}`,
+        price: `${price}`,
+        paymentstatus: `${0}`
+    })
         .then(() => {
             console.log("DATA UPDATED");
             res.send("recieved")
@@ -425,17 +934,18 @@ app.post("/busbooking", (req, res) => {
     console.log("---------BADABOOMBOOMBOOM-----------");
 
     console.log(req.body);
-    let { price, fromtime, totime, brand, class1 } = req.body;
+    let { price, fromtime, totime, brand, class1, bookingid } = req.body;
 
     busbooking.create({
-            userid: `${req.session.userid}`,
-            busname: `${brand}`,
-            class: `${class1}`,
-            fromtime: `${fromtime}`,
-            totime: `${totime}`,
-            price: `${price}`,
-            paymentstatus: `${0}`
-        })
+        userid: `${req.session.userid}`,
+        bookingid: `${bookingid}`,
+        busname: `${brand}`,
+        class: `${class1}`,
+        fromtime: `${fromtime}`,
+        totime: `${totime}`,
+        price: `${price}`,
+        paymentstatus: `${0}`
+    })
         .then(() => {
             console.log("DATA UPDATED");
             res.send("recieved")
@@ -473,15 +983,16 @@ app.post("/home", (req, res) => {
         }
         //update in database
         Usertravel.create({
-                userid: `${req.session.userid}`,
-                from: `${data.from}`,
-                to: `${data.to}`,
-                mode: `${data.transport}`,
-                adult: `${data.adult}`,
-                children: `${data.children}`,
-                departuredate: `${data.date1}`,
-                returndate: `${data.date2}`
-            })
+            userid: `${req.session.userid}`,
+            bookingid: `${short.generate()}`,
+            from: `${data.from}`,
+            to: `${data.to}`,
+            mode: `${data.transport}`,
+            adult: `${data.adult}`,
+            children: `${data.children}`,
+            departuredate: `${data.date1}`,
+            returndate: `${data.date2}`
+        })
             .then(() => {
                 console.log("new user data published");
                 console.log(data);
@@ -561,11 +1072,13 @@ app.post("/signup", (req, res) => {
             if (!user) {
                 console.log("no user like that found");
                 User.create({
-                        emailId: `${email}`,
-                        password: `${passwordfield}`
-                    })
+                    emailId: `${email}`,
+                    password: `${passwordfield}`
+                })
                     .then(() => {
                         console.log("new user created");
+                        // asyncCall();
+                        // asyncCall2();
                     })
 
                 req.flash('message', 'REGISTERED SUCCESFULLY. LOGIN NOW')
@@ -577,14 +1090,9 @@ app.post("/signup", (req, res) => {
             }
         })
 })
-
-
-
-
-
 //404 error handling
 app.get("*", (req, res) => {
 
     res.status(400).render("404 -EG");
-        //page to be designed at last
+    //page to be designed at last
 })
