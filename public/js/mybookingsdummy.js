@@ -4,7 +4,7 @@
 const maincontainer = document.querySelector(".maincontainer");
 let url = `http://localhost:3000`;
 let busbookings, trainbookings, flightbookings, hotelbookings, userdata, returnid = [], alluserdata, currentbookingid, currenthotel, currentuser;
-
+var notyf = new Notyf();
 //function for client side uuid
 
 function create_UUID() {
@@ -1219,7 +1219,8 @@ fetch(`${url}/mybookingstatus`)
           })
         })
         .then((data)=>{
-          window.location.reload();
+          notyf.success('Booking cancelled successfully');
+          setTimeout(function(){  window.location = `${url}/mybookings`; }, 1500);
         })
 
       }
