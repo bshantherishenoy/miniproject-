@@ -512,14 +512,44 @@ app.post("/cancelbooking", (req, res) => {
                                     <meta charset="UTF-8">
                                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                     <title>Document</title>
+                                    <style>
+                                    .footer-padding {
+                                        padding-bottom: 60px;
+                                    }
+
+                                    .footer {
+                                        position: absolute;
+                                        text-align: center;
+                                        bottom: 0;
+                                        width: 100%;
+                                        height: 60px;
+                                        background-color: #1abc9c;
+                                    }
+
+                                    .footer p {
+                                        margin-top: 25px;
+                                        font-size: 12px;
+                                      color: #fff;
+                                      font-size: 20px;
+                                    }
+                                    </style>
                                     </head>
                                     <body>
-                                        <h1>Your Booking was Cancelled successfully</h1>
-                                       
-                                        <h2>Thanks for using Easygo!</h2>
+                                        <h1>Your booking was Cancelled Successfully.</h1>
+
+                                        <h2>Thanks for using Easygo.</h2>
                                         <h2>We hope to see you soon!!</h2>
-                                        <h4>If you have not cancelled this booking, please reply to this mail withyour useremail and we will get back to you.</h4>
+
+                                        <h4>If you have not cancelled this booking, please reply to this mail withyour useremail and we will get back to you.Your amount will be refunded in 2 -3 working days.If not feel free to contact us.</h4>
                                     </body>
+                                    <footer>
+                                    <div class="footer-padding"></div>
+                                    <div class="footer">
+                                      <p>See you soon @ EasyGo 😁 </p>
+                                    </div>
+                                  </div>
+                                    </footer>
+                                    </html>
                                     `
                             }
                             transporter.sendMail(mailOptions, (err, data) => {
@@ -616,7 +646,7 @@ app.post("/paymentprocessing", (req, res) => {
                                 .footer-padding {
                                     padding-bottom: 60px;
                                 }
-                                
+
                                 .footer {
                                     position: absolute;
                                     text-align: center;
@@ -625,7 +655,7 @@ app.post("/paymentprocessing", (req, res) => {
                                     height: 60px;
                                     background-color: #1abc9c;
                                 }
-                                
+
                                 .footer p {
                                     margin-top: 25px;
                                     font-size: 12px;
@@ -636,10 +666,10 @@ app.post("/paymentprocessing", (req, res) => {
                             </head>
                             <body>
                                 <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
-    
+
                                 <h2>Here are the details :</h2>
                                 <hr/>
-    
+
                                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                     <tbody>
                                       <tr>
@@ -690,25 +720,26 @@ app.post("/paymentprocessing", (req, res) => {
                               <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;">Return Price</td>
                               <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;"><strong>${data3.dataValues.price}</strong></td>
                             </tr>
-                            <hr/>
-                          
+
+
 
                                     </tbody>
                                 </table>
+                                  <hr/>
                                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                 <tbody>
                                   <tr>
                                     <td valign="top"
                                       style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-                                      TOTAL PRICE</td>
+                                      <strong>TOTAL PRICE</strong></td>
                                     <td valign="top"
                                       style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-                                      <strong>${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}</strong>
+                                      <strong style="font-size:28px">${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}₹</strong>
                                     </td>
                                   </tr>
-                                  <hr>
-                                </tbody>
+                                  </tbody>
                               </table>
+                              <hr>
                             </body>
                             <footer>
                             <div class="footer-padding"></div>
@@ -718,7 +749,7 @@ app.post("/paymentprocessing", (req, res) => {
                           </div>
                             </footer>
                             </html>
-                                                                
+
                                                                 `
                                                         }
                                                         transporter.sendMail(mailOptions, (err, data) => {
@@ -769,7 +800,7 @@ app.post("/paymentprocessing", (req, res) => {
         .footer-padding {
             padding-bottom: 60px;
         }
-        
+
         .footer {
             position: absolute;
             text-align: center;
@@ -778,7 +809,7 @@ app.post("/paymentprocessing", (req, res) => {
             height: 60px;
             background-color: #1abc9c;
         }
-        
+
         .footer p {
             margin-top: 25px;
             font-size: 12px;
@@ -790,6 +821,7 @@ app.post("/paymentprocessing", (req, res) => {
     <body>
         <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
         <h2>Here are the details :</h2>
+        <hr>
         <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
             <tbody>
               <tr>
@@ -830,15 +862,15 @@ app.post("/paymentprocessing", (req, res) => {
           <tr>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-              TOTAL PRICE</td>
+              <strong>TOTAL PRICE</strong></td>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-              <strong>${Number(data1.dataValues.price)}</strong>
+              <strong style="font-size:28px">${Number(data1.dataValues.price)}₹</strong>
             </td>
           </tr>
-          <hr>
         </tbody>
       </table>
+      <hr>
     </body>
     <footer>
     <div class="footer-padding"></div>
@@ -848,8 +880,8 @@ app.post("/paymentprocessing", (req, res) => {
   </div>
     </footer>
     </html>
-    
-      
+
+
                                         `
                                 }
                                 transporter.sendMail(mailOptions, (err, data) => {
@@ -939,7 +971,7 @@ app.post("/paymentprocessing", (req, res) => {
                                     .footer-padding {
                                         padding-bottom: 60px;
                                     }
-                                    
+
                                     .footer {
                                         position: absolute;
                                         text-align: center;
@@ -948,7 +980,7 @@ app.post("/paymentprocessing", (req, res) => {
                                         height: 60px;
                                         background-color: #1abc9c;
                                     }
-                                    
+
                                     .footer p {
                                         margin-top: 25px;
                                         font-size: 12px;
@@ -959,10 +991,10 @@ app.post("/paymentprocessing", (req, res) => {
                                 </head>
                                 <body>
                                     <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
-        
+
                                     <h2>Here are the details :</h2>
                                     <hr/>
-        
+
                                     <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                         <tbody>
                                           <tr>
@@ -1013,11 +1045,9 @@ app.post("/paymentprocessing", (req, res) => {
                                   <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;">Return Price</td>
                                   <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;"><strong>${data3.dataValues.price}</strong></td>
                                 </tr>
-                                <hr/>
-                              
-    
-                                        </tbody>
+                                </tbody>
                                     </table>
+                                    <hr/>
                                     <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                     <tbody>
                                       <tr>
@@ -1026,12 +1056,12 @@ app.post("/paymentprocessing", (req, res) => {
                                           TOTAL PRICE</td>
                                         <td valign="top"
                                           style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-                                          <strong>${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}</strong>
+                                          <strong style="font-size:28px">${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}₹</strong>
                                         </td>
                                       </tr>
-                                      <hr>
                                     </tbody>
                                   </table>
+                                  <hr>
                                 </body>
                                 <footer>
                                 <div class="footer-padding"></div>
@@ -1041,7 +1071,7 @@ app.post("/paymentprocessing", (req, res) => {
                               </div>
                                 </footer>
                                 </html>
-                                                                    
+
                                                                     `
                                                         }
                                                         transporter.sendMail(mailOptions, (err, data) => {
@@ -1092,7 +1122,7 @@ app.post("/paymentprocessing", (req, res) => {
                                             .footer-padding {
                                                 padding-bottom: 60px;
                                             }
-                                            
+
                                             .footer {
                                                 position: absolute;
                                                 text-align: center;
@@ -1101,7 +1131,7 @@ app.post("/paymentprocessing", (req, res) => {
                                                 height: 60px;
                                                 background-color: #1abc9c;
                                             }
-                                            
+
                                             .footer p {
                                                 margin-top: 25px;
                                                 font-size: 12px;
@@ -1113,7 +1143,7 @@ app.post("/paymentprocessing", (req, res) => {
                                         <body>
                                             <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
                                             <h2>Here are the details :</h2>
-        
+                                              <hr>
         <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
             <tbody>
               <tr>
@@ -1155,15 +1185,15 @@ app.post("/paymentprocessing", (req, res) => {
           <tr>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-              TOTAL PRICE</td>
+              <strong>TOTAL PRICE</strong></td>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-              <strong>${Number(data1.dataValues.price)}</strong>
+              <strong style="font-size:28px;">${Number(data1.dataValues.price)}₹</strong>
             </td>
           </tr>
-          <hr>
-        </tbody>
+          </tbody>
       </table>
+      <hr>
     </body>
     <footer>
     <div class="footer-padding"></div>
@@ -1173,8 +1203,8 @@ app.post("/paymentprocessing", (req, res) => {
   </div>
     </footer>
     </html>
-    
-      
+
+
                                         `
                                     }
                                     transporter.sendMail(mailOptions, (err, data) => {
@@ -1264,7 +1294,7 @@ app.post("/paymentprocessing", (req, res) => {
                                             .footer-padding {
                                                 padding-bottom: 60px;
                                             }
-                                            
+
                                             .footer {
                                                 position: absolute;
                                                 text-align: center;
@@ -1273,7 +1303,7 @@ app.post("/paymentprocessing", (req, res) => {
                                                 height: 60px;
                                                 background-color: #1abc9c;
                                             }
-                                            
+
                                             .footer p {
                                                 margin-top: 25px;
                                                 font-size: 12px;
@@ -1284,10 +1314,10 @@ app.post("/paymentprocessing", (req, res) => {
                                         </head>
                                         <body>
                                             <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
-                
+
                                             <h2>Here are the details :</h2>
                                             <hr/>
-                
+
                                             <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                                 <tbody>
                                                   <tr>
@@ -1338,25 +1368,24 @@ app.post("/paymentprocessing", (req, res) => {
                                           <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;">Return Price</td>
                                           <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;"><strong>${data3.dataValues.price}</strong></td>
                                         </tr>
-                                        <hr/>
-                                      
-            
-                                                </tbody>
+                                      </tbody>
                                             </table>
+                                              <hr/>
                                             <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                             <tbody>
                                               <tr>
                                                 <td valign="top"
                                                   style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-                                                  TOTAL PRICE</td>
+                                                  <strong>TOTAL PRICE</strong></td>
                                                 <td valign="top"
                                                   style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-                                                  <strong>${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}</strong>
+                                                  <strong style="font-size:28px;">${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}₹</strong>
                                                 </td>
                                               </tr>
-                                              <hr>
+
                                             </tbody>
                                           </table>
+                                          <hr>
                                         </body>
                                         <footer>
                                         <div class="footer-padding"></div>
@@ -1366,7 +1395,7 @@ app.post("/paymentprocessing", (req, res) => {
                                       </div>
                                         </footer>
                                         </html>
-                                                                            
+
                                                                             `
                                                         }
                                                         transporter.sendMail(mailOptions, (err, data) => {
@@ -1416,7 +1445,7 @@ app.post("/paymentprocessing", (req, res) => {
                                             .footer-padding {
                                                 padding-bottom: 60px;
                                             }
-                                            
+
                                             .footer {
                                                 position: absolute;
                                                 text-align: center;
@@ -1425,7 +1454,7 @@ app.post("/paymentprocessing", (req, res) => {
                                                 height: 60px;
                                                 background-color: #1abc9c;
                                             }
-                                            
+
                                             .footer p {
                                                 margin-top: 25px;
                                                 font-size: 12px;
@@ -1437,7 +1466,7 @@ app.post("/paymentprocessing", (req, res) => {
                                         <body>
                                             <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
                                             <h2>Here are the details :</h2>
-        
+                                             <hr>
         <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
             <tbody>
               <tr>
@@ -1478,15 +1507,16 @@ app.post("/paymentprocessing", (req, res) => {
           <tr>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-              TOTAL PRICE</td>
+              <strong>TOTAL PRICE</strong></td>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-              <strong>${Number(data1.dataValues.price)}</strong>
+              <strong style="font-size:28px;">${Number(data1.dataValues.price)}₹</strong>
             </td>
           </tr>
-          <hr>
+
         </tbody>
       </table>
+          <hr>
     </body>
     <footer>
     <div class="footer-padding"></div>
@@ -1496,8 +1526,8 @@ app.post("/paymentprocessing", (req, res) => {
   </div>
     </footer>
     </html>
-    
-      
+
+
                                         `
                                     }
                                     transporter.sendMail(mailOptions, (err, data) => {
