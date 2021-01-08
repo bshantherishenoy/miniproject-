@@ -6,6 +6,7 @@ const session = require("express-session")
 const flash = require("connect-flash")
 const connection = require("./connection/connection") //connection
 let forcedrouting = false;
+const md5 = require('md5');
 const { Op } = require("sequelize");
 const short = require('short-uuid');
 const nodemailer = require("nodemailer");
@@ -1874,7 +1875,7 @@ app.post("/home", (req, res) => {
 app.post("/signin", (req, res) => {
     let data = req.body;
     let email = req.body.email;
-    let inputpassword = req.body.password;
+    let inputpassword = md5(req.body.password);
 
     //get all user details by email
     User.findOne({ where: { emailId: email } })
@@ -1905,8 +1906,8 @@ app.post("/signin", (req, res) => {
 app.post("/signup", (req, res) => {
     let data = req.body;
     let email = req.body.email;
-    let passwordfield = req.body.password;
-    let confirmpasswordfield = req.body.confirmpassword;
+    let passwordfield = md5(req.body.password);
+    let confirmpasswordfield = md5(req.body.confirmpassword);
 
     var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     if (reg.test(req.body.email) == false) {
