@@ -23,6 +23,7 @@ connection.authenticate()
         console.log("connected");
         app.listen(PORT, () => {
             console.log(`--------SERVER RUNNING ON PORT ${PORT}--------`);
+
         });
     })
     .catch(() => {
@@ -35,6 +36,7 @@ const flightbooking = require("./models/flightbooking");
 const trainbooking = require("./models/trainbooking");
 const busbooking = require("./models/busbooking")
 const hotelbooking = require("./models/hotelbooking");
+const Counter = require("./models/ticketcounter");
 
 User.hasMany(flightbooking, { foreignKey: 'userid' }); // creating foreign key
 flightbooking.belongsTo(User, { foreignKey: 'userid' });
@@ -67,7 +69,72 @@ app.use(flash());
 app.use(express.json());
 //basic route
 
+async function updatetickets() {
 
+
+    const trigger_flight_add = await connection.query('CREATE TRIGGER flight_add AFTER UPDATE ON flightbookings' +
+    ' FOR EACH ROW' +
+    ' BEGIN' +
+    '  UPDATE Bookingcounters SET flighttickets = flighttickets + 1 WHERE 1   = 1;' +
+    'END;')
+
+    const trigger_train_add = await connection.query('CREATE TRIGGER train_add AFTER UPDATE ON trainbookings' +
+    ' FOR EACH ROW' +
+    ' BEGIN' +
+    '  UPDATE Bookingcounters SET traintickets = traintickets + 1 WHERE 1   = 1;' +
+    'END;')
+
+    const trigger_bus_add = await connection.query('CREATE TRIGGER bus_add AFTER UPDATE ON busbookings' +
+    ' FOR EACH ROW' +
+    ' BEGIN' +
+    '  UPDATE Bookingcounters SET bustickets = bustickets + 1 WHERE 1   = 1;' +
+    'END;')
+
+    const trigger_flight_delete = await connection.query('CREATE TRIGGER flight_delete AFTER DELETE ON flightbookings' +
+    ' FOR EACH ROW' +
+    ' BEGIN' +
+    '  UPDATE Bookingcounters SET flighttickets = flighttickets - 1 WHERE 1   = 1;' +
+    'END;')
+
+    const trigger_train_delete = await connection.query('CREATE TRIGGER train_delete AFTER DELETE ON trainbookings' +
+    ' FOR EACH ROW' +
+    ' BEGIN' +
+    '  UPDATE Bookingcounters SET traintickets = traintickets - 1 WHERE 1   = 1;' +
+    'END;')
+
+    const trigger_bus_delete = await connection.query('CREATE TRIGGER bus_delete AFTER DELETE ON busbookings' +
+    ' FOR EACH ROW' +
+    ' BEGIN' +
+    '  UPDATE Bookingcounters SET bustickets = bustickets - 1 WHERE 1   = 1;' +
+    'END;')
+
+    const trigger_hotel_add = await connection.query('CREATE TRIGGER hotel_add AFTER UPDATE ON hotelbookings' +
+        ' FOR EACH ROW' +
+        ' BEGIN' +
+        '  UPDATE Bookingcounters SET hotelbookings = hotelbookings + 1 WHERE 1   = 1;' +
+        'END;')
+    const trigger_hotel_delete = await connection.query('CREATE TRIGGER hotel_delete AFTER DELETE ON hotelbookings' +
+        ' FOR EACH ROW' +
+        ' BEGIN' +
+        '  UPDATE Bookingcounters SET hotelbookings = hotelbookings - 1 WHERE 1   = 1;' +
+        'END;')
+}
+
+setTimeout(() => {
+    console.log("--------------------------------------------------------------------------------------");
+    updatetickets();
+    insert();
+}, 2000)
+
+
+async function insert() {
+    Counter.create({
+        flighttickets: 0,
+        traintickets: 0,
+        bustickets: 0,
+        hotelbookings: 0
+    })
+}
 //nodemailer setup
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -500,68 +567,47 @@ app.post("/cancelbooking", (req, res) => {
                         }
                     })
                         .then(() => {
-                            console.log("deleted");
-                            let mailOptions = {
-                                from: 'easygowebservice@gmail.com',
-                                to: `${emailidofuser}`,
-                                subject: 'YOUR BOOKING WAS CANCELLED',
-                                html: `
-                                <!DOCTYPE html>
-                                <html lang="en">
-                                <head>
-                                    <meta charset="UTF-8">
-                                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                    <title>Document</title>
-                                    <style>
-                                    .footer-padding {
-                                        padding-bottom: 60px;
-                                    }
 
-                                    .footer {
-                                        position: absolute;
-                                        text-align: center;
-                                        bottom: 0;
-                                        width: 100%;
-                                        height: 60px;
-                                        background-color: #1abc9c;
-                                    }
 
-                                    .footer p {
-                                        margin-top: 25px;
-                                        font-size: 12px;
-                                      color: #fff;
-                                      font-size: 20px;
-                                    }
-                                    </style>
-                                    </head>
-                                    <body>
-                                        <h1>Your booking was Cancelled Successfully.</h1>
-
-                                        <h2>Thanks for using Easygo.</h2>
-                                        <h2>We hope to see you soon!!</h2>
-
-                                        <h4>If you have not cancelled this booking, please reply to this mail withyour useremail and we will get back to you.Your amount will be refunded in 2 -3 working days.If not feel free to contact us.</h4>
-                                    </body>
-                                    <footer>
-                                    <div class="footer-padding"></div>
-                                    <div class="footer">
-                                      <p>See you soon @ EasyGo 😁 </p>
-                                    </div>
-                                  </div>
-                                    </footer>
-                                    </html>
-                                    `
-                            }
-                            transporter.sendMail(mailOptions, (err, data) => {
-                                if (err) {
-                                    console.log("error");
+                            hotelbooking.destroy({
+                                where: {
+                                    bookingid: req.body.id
                                 }
-                                else {
-                                    console.log("sent");
+                            }).then(() => {
+                                console.log("deleted");
+                                let mailOptions = {
+                                    from: 'easygowebservice@gmail.com',
+                                    to: `${emailidofuser}`,
+                                    subject: 'YOUR BOOKING WAS CANCELLED',
+                                    html: `
+                                    <!DOCTYPE html>
+                                    <html lang="en">
+                                    <head>
+                                        <meta charset="UTF-8">
+                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                        <title>Document</title>
+                                        </head>
+                                        <body>
+                                            <h1>Your Booking was Cancelled successfully</h1>
+                                           
+                                            <h2>Thanks for using Easygo!</h2>
+                                            <h2>We hope to see you soon!!</h2>
+                                            <h4>If you have not cancelled this booking, please reply to this mail withyour useremail and we will get back to you.</h4>
+                                        </body>
+                                        `
                                 }
+                                transporter.sendMail(mailOptions, (err, data) => {
+                                    if (err) {
+                                        console.log("error");
+                                    }
+                                    else {
+                                        console.log("sent");
+                                    }
 
+                                })
+                                res.send("deleted")
                             })
-                            res.send("deleted")
+
 
                         })
                 })
@@ -646,7 +692,7 @@ app.post("/paymentprocessing", (req, res) => {
                                 .footer-padding {
                                     padding-bottom: 60px;
                                 }
-
+                                
                                 .footer {
                                     position: absolute;
                                     text-align: center;
@@ -655,7 +701,7 @@ app.post("/paymentprocessing", (req, res) => {
                                     height: 60px;
                                     background-color: #1abc9c;
                                 }
-
+                                
                                 .footer p {
                                     margin-top: 25px;
                                     font-size: 12px;
@@ -666,10 +712,10 @@ app.post("/paymentprocessing", (req, res) => {
                             </head>
                             <body>
                                 <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
-
+    
                                 <h2>Here are the details :</h2>
                                 <hr/>
-
+    
                                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                     <tbody>
                                       <tr>
@@ -720,26 +766,25 @@ app.post("/paymentprocessing", (req, res) => {
                               <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;">Return Price</td>
                               <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;"><strong>${data3.dataValues.price}</strong></td>
                             </tr>
-
-
+                            <hr/>
+                          
 
                                     </tbody>
                                 </table>
-                                  <hr/>
                                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                 <tbody>
                                   <tr>
                                     <td valign="top"
                                       style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-                                      <strong>TOTAL PRICE</strong></td>
+                                      TOTAL PRICE</td>
                                     <td valign="top"
                                       style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-                                      <strong style="font-size:28px">${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}₹</strong>
+                                      <strong>${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}</strong>
                                     </td>
                                   </tr>
-                                  </tbody>
+                                  <hr>
+                                </tbody>
                               </table>
-                              <hr>
                             </body>
                             <footer>
                             <div class="footer-padding"></div>
@@ -749,7 +794,7 @@ app.post("/paymentprocessing", (req, res) => {
                           </div>
                             </footer>
                             </html>
-
+                                                                
                                                                 `
                                                         }
                                                         transporter.sendMail(mailOptions, (err, data) => {
@@ -800,7 +845,7 @@ app.post("/paymentprocessing", (req, res) => {
         .footer-padding {
             padding-bottom: 60px;
         }
-
+        
         .footer {
             position: absolute;
             text-align: center;
@@ -809,7 +854,7 @@ app.post("/paymentprocessing", (req, res) => {
             height: 60px;
             background-color: #1abc9c;
         }
-
+        
         .footer p {
             margin-top: 25px;
             font-size: 12px;
@@ -821,7 +866,6 @@ app.post("/paymentprocessing", (req, res) => {
     <body>
         <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
         <h2>Here are the details :</h2>
-        <hr>
         <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
             <tbody>
               <tr>
@@ -862,15 +906,15 @@ app.post("/paymentprocessing", (req, res) => {
           <tr>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-              <strong>TOTAL PRICE</strong></td>
+              TOTAL PRICE</td>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-              <strong style="font-size:28px">${Number(data1.dataValues.price)}₹</strong>
+              <strong>${Number(data1.dataValues.price)}</strong>
             </td>
           </tr>
+          <hr>
         </tbody>
       </table>
-      <hr>
     </body>
     <footer>
     <div class="footer-padding"></div>
@@ -880,8 +924,8 @@ app.post("/paymentprocessing", (req, res) => {
   </div>
     </footer>
     </html>
-
-
+    
+      
                                         `
                                 }
                                 transporter.sendMail(mailOptions, (err, data) => {
@@ -971,7 +1015,7 @@ app.post("/paymentprocessing", (req, res) => {
                                     .footer-padding {
                                         padding-bottom: 60px;
                                     }
-
+                                    
                                     .footer {
                                         position: absolute;
                                         text-align: center;
@@ -980,7 +1024,7 @@ app.post("/paymentprocessing", (req, res) => {
                                         height: 60px;
                                         background-color: #1abc9c;
                                     }
-
+                                    
                                     .footer p {
                                         margin-top: 25px;
                                         font-size: 12px;
@@ -991,10 +1035,10 @@ app.post("/paymentprocessing", (req, res) => {
                                 </head>
                                 <body>
                                     <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
-
+        
                                     <h2>Here are the details :</h2>
                                     <hr/>
-
+        
                                     <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                         <tbody>
                                           <tr>
@@ -1045,9 +1089,11 @@ app.post("/paymentprocessing", (req, res) => {
                                   <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;">Return Price</td>
                                   <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;"><strong>${data3.dataValues.price}</strong></td>
                                 </tr>
-                                </tbody>
+                                <hr/>
+                              
+    
+                                        </tbody>
                                     </table>
-                                    <hr/>
                                     <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                     <tbody>
                                       <tr>
@@ -1056,12 +1102,12 @@ app.post("/paymentprocessing", (req, res) => {
                                           TOTAL PRICE</td>
                                         <td valign="top"
                                           style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-                                          <strong style="font-size:28px">${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}₹</strong>
+                                          <strong>${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}</strong>
                                         </td>
                                       </tr>
+                                      <hr>
                                     </tbody>
                                   </table>
-                                  <hr>
                                 </body>
                                 <footer>
                                 <div class="footer-padding"></div>
@@ -1071,7 +1117,7 @@ app.post("/paymentprocessing", (req, res) => {
                               </div>
                                 </footer>
                                 </html>
-
+                                                                    
                                                                     `
                                                         }
                                                         transporter.sendMail(mailOptions, (err, data) => {
@@ -1122,7 +1168,7 @@ app.post("/paymentprocessing", (req, res) => {
                                             .footer-padding {
                                                 padding-bottom: 60px;
                                             }
-
+                                            
                                             .footer {
                                                 position: absolute;
                                                 text-align: center;
@@ -1131,7 +1177,7 @@ app.post("/paymentprocessing", (req, res) => {
                                                 height: 60px;
                                                 background-color: #1abc9c;
                                             }
-
+                                            
                                             .footer p {
                                                 margin-top: 25px;
                                                 font-size: 12px;
@@ -1143,7 +1189,7 @@ app.post("/paymentprocessing", (req, res) => {
                                         <body>
                                             <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
                                             <h2>Here are the details :</h2>
-                                              <hr>
+        
         <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
             <tbody>
               <tr>
@@ -1185,15 +1231,15 @@ app.post("/paymentprocessing", (req, res) => {
           <tr>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-              <strong>TOTAL PRICE</strong></td>
+              TOTAL PRICE</td>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-              <strong style="font-size:28px;">${Number(data1.dataValues.price)}₹</strong>
+              <strong>${Number(data1.dataValues.price)}</strong>
             </td>
           </tr>
-          </tbody>
+          <hr>
+        </tbody>
       </table>
-      <hr>
     </body>
     <footer>
     <div class="footer-padding"></div>
@@ -1203,8 +1249,8 @@ app.post("/paymentprocessing", (req, res) => {
   </div>
     </footer>
     </html>
-
-
+    
+      
                                         `
                                     }
                                     transporter.sendMail(mailOptions, (err, data) => {
@@ -1294,7 +1340,7 @@ app.post("/paymentprocessing", (req, res) => {
                                             .footer-padding {
                                                 padding-bottom: 60px;
                                             }
-
+                                            
                                             .footer {
                                                 position: absolute;
                                                 text-align: center;
@@ -1303,7 +1349,7 @@ app.post("/paymentprocessing", (req, res) => {
                                                 height: 60px;
                                                 background-color: #1abc9c;
                                             }
-
+                                            
                                             .footer p {
                                                 margin-top: 25px;
                                                 font-size: 12px;
@@ -1314,10 +1360,10 @@ app.post("/paymentprocessing", (req, res) => {
                                         </head>
                                         <body>
                                             <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
-
+                
                                             <h2>Here are the details :</h2>
                                             <hr/>
-
+                
                                             <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                                 <tbody>
                                                   <tr>
@@ -1368,24 +1414,25 @@ app.post("/paymentprocessing", (req, res) => {
                                           <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;">Return Price</td>
                                           <td valign="top" style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px;"><strong>${data3.dataValues.price}</strong></td>
                                         </tr>
-                                      </tbody>
+                                        <hr/>
+                                      
+            
+                                                </tbody>
                                             </table>
-                                              <hr/>
                                             <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                                             <tbody>
                                               <tr>
                                                 <td valign="top"
                                                   style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-                                                  <strong>TOTAL PRICE</strong></td>
+                                                  TOTAL PRICE</td>
                                                 <td valign="top"
                                                   style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-                                                  <strong style="font-size:28px;">${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}₹</strong>
+                                                  <strong>${Number(data3.dataValues.price) + Number(data4.dataValues.hotelprice) + Number(data1.dataValues.price)}</strong>
                                                 </td>
                                               </tr>
-
+                                              <hr>
                                             </tbody>
                                           </table>
-                                          <hr>
                                         </body>
                                         <footer>
                                         <div class="footer-padding"></div>
@@ -1395,7 +1442,7 @@ app.post("/paymentprocessing", (req, res) => {
                                       </div>
                                         </footer>
                                         </html>
-
+                                                                            
                                                                             `
                                                         }
                                                         transporter.sendMail(mailOptions, (err, data) => {
@@ -1445,7 +1492,7 @@ app.post("/paymentprocessing", (req, res) => {
                                             .footer-padding {
                                                 padding-bottom: 60px;
                                             }
-
+                                            
                                             .footer {
                                                 position: absolute;
                                                 text-align: center;
@@ -1454,7 +1501,7 @@ app.post("/paymentprocessing", (req, res) => {
                                                 height: 60px;
                                                 background-color: #1abc9c;
                                             }
-
+                                            
                                             .footer p {
                                                 margin-top: 25px;
                                                 font-size: 12px;
@@ -1466,7 +1513,7 @@ app.post("/paymentprocessing", (req, res) => {
                                         <body>
                                             <h1>Thankyou! for Easygo, Your booking is confirmed</h1>
                                             <h2>Here are the details :</h2>
-                                             <hr>
+        
         <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
             <tbody>
               <tr>
@@ -1507,16 +1554,15 @@ app.post("/paymentprocessing", (req, res) => {
           <tr>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: left; padding-left: 1rem;">
-              <strong>TOTAL PRICE</strong></td>
+              TOTAL PRICE</td>
             <td valign="top"
               style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:20px; text-align: end; padding-right: 5rem;">
-              <strong style="font-size:28px;">${Number(data1.dataValues.price)}₹</strong>
+              <strong>${Number(data1.dataValues.price)}</strong>
             </td>
           </tr>
-
+          <hr>
         </tbody>
       </table>
-          <hr>
     </body>
     <footer>
     <div class="footer-padding"></div>
@@ -1526,8 +1572,8 @@ app.post("/paymentprocessing", (req, res) => {
   </div>
     </footer>
     </html>
-
-
+    
+      
                                         `
                                     }
                                     transporter.sendMail(mailOptions, (err, data) => {
@@ -1591,9 +1637,9 @@ app.post("/summarytransportdetails", (req, res) => {
                     ['createdAt', 'DESC']
                 ]
             }).then((user) => {
-                console.log("------------------here-------------------");
+
                 console.log(user);
-                console.log("----here is what you want in life child ----------------------------");
+
                 console.log(user[1]);
                 console.log(user[1].dataValues);
                 let data1 = user[1].dataValues;
@@ -1848,7 +1894,7 @@ app.post("/home", (req, res) => {
         let todaydate = new Date().setHours(0, 0, 0, 0);
         //Data input validation //handle this only update in db if valid //currently everything is crashing
         if (data.from == data.to) {
-            req.flash('message', 'SORCE AND DESTINATION CANNOT BE SAME')
+            req.flash('message', 'SOURCE AND DESTINATION CANNOT BE SAME')
             return res.render("index", { navbar: 'loginsuccesful', errormessages: req.flash('message') })
         }
         if (inputdate < todaydate) {
